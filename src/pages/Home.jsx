@@ -8,6 +8,8 @@ import coverMap from '../assets/cover-map.svg';
 import cashForJunk from '../assets/cash-for-junk.jpg';
 import impoundingImg from '../assets/impounding.jpg';
 import tnLogo from '../assets/tn-logo.svg';
+import towing4 from '../assets/towing4.png';
+import towing5 from '../assets/towing5.png';
 import Footer from '../components/Footer';
 
 const Navbar = () => {
@@ -115,7 +117,8 @@ const Home = () => {
       icon: '⚠️', 
       title: 'Emergency Towing',
       description: 'Fast response times for urgent situations, any time of day or night.',
-      features: ['24/7 emergency service', '30-minute response time', 'Experienced operators']
+      features: ['24/7 emergency service', '30-minute response time', 'Experienced operators'],
+      image: towing5
     },
     { 
       icon: '🌐', 
@@ -198,6 +201,38 @@ const Home = () => {
           >
             Call Now: 615-333-3704
           </motion.a>
+        </motion.div>
+      </section>
+
+      {/* Service Showcase Section - New! */}
+      <section className="service-showcase">
+        <motion.div 
+          className="showcase-container"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="showcase-image"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <img src={towing4} alt="Luxury car towing service" />
+            <div className="showcase-caption">Luxury Vehicle Transport</div>
+          </motion.div>
+          <motion.div 
+            className="showcase-image"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <img src={towing5} alt="Emergency towing service" />
+            <div className="showcase-caption">Emergency Towing Service</div>
+          </motion.div>
         </motion.div>
       </section>
 
