@@ -11,6 +11,7 @@ import tnLogo from '../assets/tn-logo.svg';
 import towing4 from '../assets/towing4.png';
 import towing5 from '../assets/towing5.png';
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet-async';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -174,6 +175,67 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Helmet>
+        <title>Expressway Towing | 24/7 Emergency Towing & Roadside Assistance in Nashville</title>
+        <meta name="description" content="Professional 24/7 towing service in Nashville, Franklin, Brentwood & surrounding areas. Emergency roadside assistance, flatbed towing, long-distance transport, and cash for junk cars. Fast 30-minute response time!" />
+        <meta name="keywords" content="towing service nashville, emergency towing, roadside assistance, flatbed towing, car towing, nashville towing, junk car removal, 24/7 towing, towing franklin tn, towing brentwood tn" />
+        <meta property="og:title" content="Expressway Towing | 24/7 Emergency Towing & Roadside Assistance" />
+        <meta property="og:description" content="Professional 24/7 towing service in Nashville. Emergency roadside assistance, flatbed towing, long-distance transport, and cash for junk cars. Fast 30-minute response time!" />
+        <meta property="og:image" content="https://expressway-towing.com/social-share.png" />
+        <meta property="og:url" content="https://expressway-towing.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://expressway-towing.com" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Expressway Towing",
+            "image": "https://expressway-towing.com/social-share.png",
+            "description": "Professional 24/7 towing service in Nashville. Emergency roadside assistance, flatbed towing, long-distance transport, and cash for junk cars.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Nashville",
+              "addressRegion": "TN",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "YOUR_LATITUDE",
+              "longitude": "YOUR_LONGITUDE"
+            },
+            "url": "https://expressway-towing.com",
+            "telephone": "+16153333704",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "00:00",
+              "closes": "23:59"
+            },
+            "sameAs": [
+              "https://www.facebook.com/expresswaytowing",
+              "https://www.instagram.com/expresswaytowing"
+            ],
+            "priceRange": "$$",
+            "areaServed": [
+              "Nashville",
+              "Franklin",
+              "Brentwood",
+              "Murfreesboro",
+              "Hendersonville",
+              "Lebanon",
+              "Smyrna"
+            ]
+          })}
+        </script>
+      </Helmet>
       <Navbar />
       
       {/* Hero Section */}
@@ -184,6 +246,7 @@ const Home = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
+        aria-label="Hero section"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -192,12 +255,13 @@ const Home = () => {
           className="hero-content"
         >
           <h1>Expressway Towing</h1>
-          <p>Your dependable partner when you're in a jam on the road</p>
+          <h2 className="hero-subtitle">Your dependable partner when you're in a jam on the road</h2>
           <motion.a
             href="tel:615-333-3704"
             className="cta-button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Call Expressway Towing at 615-333-3704"
           >
             Call Now: 615-333-3704
           </motion.a>
@@ -220,7 +284,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img src={towing4} alt="Luxury car towing service" />
+            <img 
+              src={towing4} 
+              alt="Expressway Towing flatbed truck towing a luxury Mercedes-Benz vehicle in Nashville" 
+            />
             <div className="showcase-caption">Luxury Vehicle Transport</div>
           </motion.div>
           <motion.div 
@@ -230,7 +297,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img src={towing5} alt="Emergency towing service" />
+            <img 
+              src={towing5} 
+              alt="Expressway Towing emergency service assisting a vehicle with a flat tire in Nashville" 
+            />
             <div className="showcase-caption">Emergency Towing Service</div>
           </motion.div>
         </motion.div>
