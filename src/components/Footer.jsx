@@ -15,7 +15,6 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <span className="footer-logo-icon">🛻</span>
           <div className="footer-logo-text">
             <span className="footer-logo-express">EXPRESSWAY</span>
             <span className="footer-logo-towing">TOWING</span>

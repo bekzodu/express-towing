@@ -30,25 +30,22 @@ const Navbar = () => {
       {isBannerVisible && (
         <motion.div 
           className="promo-banner"
-          initial={{ height: 40, opacity: 1 }}
+          initial={{ height: 45, opacity: 1 }}
+          animate={{ height: 45, opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
         >
           <div className="banner-content">
             <span className="banner-text">
-              <span className="banner-icon">💰</span>
-              Turn Your Unwanted Vehicle into Cash Today!
+              Need a tow? Call us now for a quote — (615) 259-2727
             </span>
-            <motion.button
+            <motion.a
+              href="tel:(615) 259-2727"
               className="banner-cta"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const element = document.querySelector('.junk-cars');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Get an Offer
-            </motion.button>
+              Call Now
+            </motion.a>
           </div>
           <button 
             className="banner-close"
@@ -59,14 +56,13 @@ const Navbar = () => {
           </button>
         </motion.div>
       )}
-      <nav className="navbar">
+      <nav className={`navbar ${!isBannerVisible ? 'banner-closed' : ''}`}>
         <div className="nav-content">
           <motion.div 
             className="nav-logo"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <span className="logo-icon">🛻</span>
             <div className="logo-text">
               <span className="logo-express">EXPRESSWAY</span>
               <span className="logo-towing">TOWING</span>
@@ -103,53 +99,40 @@ const Home = () => {
 
   const services = [
     { 
-      icon: '🚛', 
       title: 'Flatbed Towing',
-      description: 'Safe and secure transport for all vehicle types, from luxury cars to damaged vehicles.',
-      features: ['Damage-free transport', 'Suitable for all vehicles', '24/7 availability']
+      description: 'Secure transport for luxury and damaged vehicles',
+      icon: '🚛',
+      details: 'Safe, damage-free towing with state-of-the-art flatbed trucks'
     },
     { 
-      icon: '🆘', 
-      title: 'Roadside Assistance',
-      description: 'Immediate help for any roadside emergency, getting you back on track quickly.',
-      features: ['Quick response', 'Professional service', 'Comprehensive support']
-    },
-    { 
-      icon: '⚠️', 
       title: 'Emergency Towing',
-      description: 'Fast response times for urgent situations, any time of day or night.',
-      features: ['24/7 emergency service', '30-minute response time', 'Experienced operators'],
-      image: towing5
+      description: 'Fast 24/7 response when you need it most',
+      icon: '🆘',
+      details: 'Average 30-minute response time across Nashville area'
     },
     { 
-      icon: '🌐', 
-      title: 'Long-Distance Auto Transport',
-      description: 'Reliable vehicle transportation services across state lines with full insurance coverage.',
-      features: ['Interstate transport', 'Vehicle tracking', 'Fully insured']
+      title: 'Roadside Assistance',
+      description: 'Jump starts, tire changes, and lockout service',
+      icon: '🔧',
+      details: 'Quick solutions to get you back on the road'
     },
     { 
-      icon: '🏋️‍♂️', 
-      title: 'Heavy Hauling & Recovery',
-      description: 'Specialized equipment and expertise for heavy vehicle recovery and transport.',
-      features: ['Heavy-duty capability', 'Skilled operators', 'Special equipment']
+      title: 'Long-Distance',
+      description: 'Interstate vehicle transportation with tracking',
+      icon: '🛣️',
+      details: 'Fully insured cross-state transport services'
     },
     { 
-      icon: '🔧', 
-      title: 'Battery & Mechanical Help',
-      description: 'Quick solutions for battery issues and basic mechanical problems.',
-      features: ['Jump starts', 'Battery testing', 'Basic repairs']
+      title: 'Heavy Hauling',
+      description: 'Specialized equipment for large vehicles',
+      icon: '💪',
+      details: 'Commercial trucks, RVs, and heavy machinery'
     },
     { 
-      icon: '🚫', 
-      title: 'Private Property Impounding',
-      description: 'Professional management of unauthorized vehicles on your property, ensuring your parking spaces remain available for authorized users.',
-      features: ['24/7 monitoring', 'Quick response time', 'Legal compliance']
-    },
-    { 
-      icon: '💰', 
       title: 'Cash for Junk Cars',
-      description: 'Turn your unwanted vehicle into instant cash. We buy cars in any condition and handle all the paperwork.',
-      features: ['Same-day payment', 'Free towing', 'Best market rates']
+      description: 'Instant payment for vehicles in any condition',
+      icon: '💵',
+      details: 'Free towing and same-day cash offers'
     }
   ];
 
@@ -176,46 +159,43 @@ const Home = () => {
   return (
     <div className="home">
       <Helmet>
-        <title>Expressway Towing | 24/7 Emergency Towing & Roadside Assistance in Nashville</title>
-        <meta name="description" content="Professional 24/7 towing service in Nashville, Franklin, Brentwood & surrounding areas. Emergency roadside assistance, flatbed towing, long-distance transport, and cash for junk cars. Fast 30-minute response time!" />
-        <meta name="keywords" content="towing service nashville, emergency towing, roadside assistance, flatbed towing, car towing, nashville towing, junk car removal, 24/7 towing, towing franklin tn, towing brentwood tn" />
-        <meta property="og:title" content="Expressway Towing | 24/7 Emergency Towing & Roadside Assistance" />
-        <meta property="og:description" content="Professional 24/7 towing service in Nashville. Emergency roadside assistance, flatbed towing, long-distance transport, and cash for junk cars. Fast 30-minute response time!" />
+        <title>Expressway Towing | 24/7 Emergency Towing Nashville TN | (615) 259-2727</title>
+        <meta name="description" content="Nashville's trusted 24/7 towing service. Emergency roadside assistance, flatbed towing, heavy hauling, private property impounding & cash for junk cars. Serving Nashville, Franklin, Brentwood, Murfreesboro. Call (615) 259-2727 for fast response." />
+        <meta name="keywords" content="towing Nashville TN, 24/7 towing Nashville, emergency towing Nashville, roadside assistance Nashville, flatbed towing Nashville, tow truck Nashville, junk car removal Nashville, cash for junk cars Nashville, heavy duty towing Nashville, private property towing Nashville, Franklin TN towing, Brentwood TN towing" />
+        <meta property="og:title" content="Expressway Towing | 24/7 Emergency Towing Nashville TN" />
+        <meta property="og:description" content="Nashville's trusted 24/7 towing service. Emergency roadside assistance, flatbed towing, heavy hauling & cash for junk cars. Call (615) 259-2727." />
         <meta property="og:image" content="https://expressway-towing.com/social-share.png" />
         <meta property="og:url" content="https://expressway-towing.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://expressway-towing.com" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
+            "@type": "TowingService",
             "name": "Expressway Towing",
             "image": "https://expressway-towing.com/social-share.png",
-            "description": "Professional 24/7 towing service in Nashville. Emergency roadside assistance, flatbed towing, long-distance transport, and cash for junk cars.",
+            "description": "Nashville's trusted 24/7 towing service providing emergency roadside assistance, flatbed towing, heavy hauling, private property impounding, and cash for junk cars.",
+            "@id": "https://expressway-towing.com",
+            "url": "https://expressway-towing.com",
+            "telephone": "+16152592727",
+            "email": "Expresswaytow1@gmail.com",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Nashville",
               "addressRegion": "TN",
+              "postalCode": "37203",
               "addressCountry": "US"
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": "YOUR_LATITUDE",
-              "longitude": "YOUR_LONGITUDE"
+              "latitude": 36.1627,
+              "longitude": -86.7816
             },
-            "url": "https://expressway-towing.com",
-            "telephone": "+16153333704",
             "openingHoursSpecification": {
               "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-              ],
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
               "opens": "00:00",
               "closes": "23:59"
             },
@@ -225,14 +205,31 @@ const Home = () => {
             ],
             "priceRange": "$$",
             "areaServed": [
-              "Nashville",
-              "Franklin",
-              "Brentwood",
-              "Murfreesboro",
-              "Hendersonville",
-              "Lebanon",
-              "Smyrna"
-            ]
+              {"@type": "City", "name": "Nashville", "sameAs": "https://en.wikipedia.org/wiki/Nashville,_Tennessee"},
+              {"@type": "City", "name": "Franklin"},
+              {"@type": "City", "name": "Brentwood"},
+              {"@type": "City", "name": "Murfreesboro"},
+              {"@type": "City", "name": "Hendersonville"},
+              {"@type": "City", "name": "Lebanon"},
+              {"@type": "City", "name": "Smyrna"}
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Towing Services",
+              "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Emergency Towing"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Flatbed Towing"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Roadside Assistance"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Heavy Hauling"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Private Property Impounding"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cash for Junk Cars"}}
+              ]
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "reviewCount": "127"
+            }
           })}
         </script>
       </Helmet>
@@ -255,15 +252,15 @@ const Home = () => {
           className="hero-content"
         >
           <h1>Expressway Towing</h1>
-          <h2 className="hero-subtitle">Your dependable partner when you're in a jam on the road</h2>
+          <h2 className="hero-subtitle">Professional Towing & Roadside Assistance in Nashville</h2>
           <motion.a
-            href="tel:615-333-3704"
+            href="tel:(615) 259-2727"
             className="cta-button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Call Expressway Towing at 615-333-3704"
+            aria-label="Call Expressway Towing at (615) 259-2727"
           >
-            Call Now: 615-333-3704
+            Call Now: (615) 259-2727
           </motion.a>
         </motion.div>
       </section>
@@ -315,45 +312,28 @@ const Home = () => {
           viewport={{ once: true }}
           className="services-container"
         >
-          <h2 className="section-title">Our Professional Services</h2>
+          <h2 className="section-title">Our Services</h2>
           <p className="services-subtitle">
-            Comprehensive towing and roadside assistance solutions you can count on
+            Professional towing and roadside assistance when you need it
           </p>
           <div className="services-grid">
             {visibleServices.map((service, index) => (
               <motion.div
                 key={index}
                 className="service-card"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ 
-                  y: -5, 
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-                  backgroundColor: "var(--highlight-bg-color)"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.1,
+                  ease: [0.4, 0, 0.2, 1]
                 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-100px" }}
               >
-                <div className="service-header">
-                  <span className="service-icon">{service.icon}</span>
-                  <h3 className="service-title">{service.title}</h3>
-                </div>
+                <span className="icon">{service.icon}</span>
+                <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
-                <ul className="service-features">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx}>
-                      <span className="feature-bullet">•</span> {feature}
-                    </li>
-                  ))}
-                </ul>
-                <motion.button
-                  className="service-cta"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => window.location.href = 'tel:615-333-3704'}
-                >
-                  Request Service
-                </motion.button>
+                <p className="service-details">{service.details}</p>
               </motion.div>
             ))}
           </div>
@@ -384,10 +364,22 @@ const Home = () => {
           >
             <h2>24/7 Service You Can Trust</h2>
             <p>
-              We're here around the clock, ready to lend a helping hand whenever you need it. 
-              Whether it's a flat tire, a dead battery, or a vehicle emergency, our experienced 
-              team has got you covered. We'll get you back on the road safely and swiftly.
+              Professional towing and roadside assistance across Nashville. Our experienced team is ready to help you get back on the road safely.
             </p>
+            <div className="about-highlights">
+              <div className="highlight-item">
+                <span className="highlight-number">24/7</span>
+                <span className="highlight-label">Available</span>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-number">30min</span>
+                <span className="highlight-label">Response</span>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-number">100%</span>
+                <span className="highlight-label">Licensed</span>
+              </div>
+            </div>
           </motion.div>
           <motion.div
             className="about-image"
@@ -428,12 +420,11 @@ const Home = () => {
                 <motion.div
                   key={index}
                   className="area-pin"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ delay: index * 0.1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ delay: index * 0.05 }}
                 >
-                  <span className="pin-icon">📍</span>
                   <span className="area-name">{area}</span>
                 </motion.div>
               ))}
@@ -450,7 +441,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section - Now with card carousel style */}
+      {/* Testimonials Section */}
       <section id="testimonials" className="testimonials">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -464,16 +455,16 @@ const Home = () => {
             <motion.div
               key={index}
               className="testimonial-card-modern"
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              whileHover={{ scale: 1.02 }}
-              transition={{ delay: index * 0.2 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -3 }}
+              transition={{ delay: index * 0.1 }}
             >
               <div className="quote-mark">"</div>
               <p className="testimonial-text">{testimonial.text}</p>
               <div className="testimonial-footer">
-                <div className="stars">{"⭐".repeat(testimonial.rating)}</div>
-                <h4 className="testimonial-name">- {testimonial.name}</h4>
+                <div className="stars">{"★".repeat(testimonial.rating)}</div>
+                <h4 className="testimonial-name">— {testimonial.name}</h4>
               </div>
             </motion.div>
           ))}
@@ -499,20 +490,25 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2>Why Choose Expressway Towing?</h2>
-            <div className="features-grid">
-              <motion.div whileHover={{ scale: 1.05 }} className="feature">
-                <h3>24/7 Availability</h3>
-                <p>Round-the-clock service for your peace of mind</p>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} className="feature">
-                <h3>Fast Response</h3>
-                <p>Quick arrival times to get you back on the road</p>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} className="feature">
-                <h3>Licensed & Insured</h3>
-                <p>Fully certified professional service</p>
-              </motion.div>
+            <h2>Why Choose Us</h2>
+            <p className="why-us-intro">Fast, reliable, and professional service across Nashville and surrounding areas.</p>
+            <div className="features-list">
+              <div className="feature-simple">
+                <span className="feature-check">✓</span>
+                <span>24/7 Emergency Response</span>
+              </div>
+              <div className="feature-simple">
+                <span className="feature-check">✓</span>
+                <span>Licensed & Insured</span>
+              </div>
+              <div className="feature-simple">
+                <span className="feature-check">✓</span>
+                <span>Experienced Operators</span>
+              </div>
+              <div className="feature-simple">
+                <span className="feature-check">✓</span>
+                <span>Competitive Pricing</span>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -542,82 +538,33 @@ const Home = () => {
           >
             <div className="content-wrapper">
               <h2>Private Property Impounding</h2>
-              <h3 className="impound-subtitle">Protect Your Property Rights</h3>
               <p className="impound-description">
-                Managing a property means ensuring authorized access and maintaining order. 
-                Unauthorized vehicles not only create chaos but can pose serious liability risks 
-                and safety concerns for your property.
+                Professional parking enforcement for property owners. We handle unauthorized vehicles quickly and legally.
               </p>
               
-              <div className="impound-benefits">
-                <div className="benefit-column">
-                  <h4>Property Owner Benefits</h4>
-                  <ul>
-                    <li>
-                      <span className="check-icon">✓</span>
-                      <div>
-                        <strong>24/7 Monitoring</strong>
-                        <p>Round-the-clock surveillance of your parking areas</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span className="check-icon">✓</span>
-                      <div>
-                        <strong>Quick Response</strong>
-                        <p>Swift removal of unauthorized vehicles</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span className="check-icon">✓</span>
-                      <div>
-                        <strong>Legal Compliance</strong>
-                        <p>All actions follow local regulations and laws</p>
-                      </div>
-                    </li>
-                  </ul>
+              <div className="impound-list">
+                <div className="impound-feature">
+                  <span>✓</span>
+                  <span>24/7 Monitoring & Response</span>
                 </div>
-                <div className="benefit-column">
-                  <h4>Our Process</h4>
-                  <ul>
-                    <li>
-                      <span className="number-icon">1</span>
-                      <div>
-                        <strong>Property Assessment</strong>
-                        <p>Complete evaluation of your parking needs</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span className="number-icon">2</span>
-                      <div>
-                        <strong>Signage Installation</strong>
-                        <p>Clear warning signs meeting legal requirements</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span className="number-icon">3</span>
-                      <div>
-                        <strong>Enforcement</strong>
-                        <p>Professional handling of unauthorized vehicles</p>
-                      </div>
-                    </li>
-                  </ul>
+                <div className="impound-feature">
+                  <span>✓</span>
+                  <span>Legal Compliance & Signage</span>
+                </div>
+                <div className="impound-feature">
+                  <span>✓</span>
+                  <span>Professional Documentation</span>
                 </div>
               </div>
 
-              <div className="impound-cta">
-                <motion.button
-                  className="schedule-inspection"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => window.location.href = 'tel:615-333-3704'}
-                >
-                  <span className="button-icon">📋</span>
-                  Schedule Property Inspection
-                </motion.button>
-                <p className="cta-subtext">
-                  Protect your property rights and ensure smooth operations with our professional impounding services
-                </p>
-              </div>
+              <motion.button
+                className="schedule-inspection"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => window.location.href = 'tel:(615) 259-2727'}
+              >
+                Schedule Inspection
+              </motion.button>
             </div>
           </motion.div>
         </div>
@@ -643,31 +590,27 @@ const Home = () => {
           >
             <h2>Cash for Junk Cars</h2>
             <p>
-              Turn your unwanted vehicle into instant cash! We buy cars in any condition 
-              and offer competitive prices with free towing services.
+              Turn your unwanted vehicle into instant cash. We buy cars in any condition with free towing included.
             </p>
             <div className="junk-cars-benefits">
-              <div className="benefit">
-                <span className="benefit-icon">💵</span>
-                <h3>Instant Cash</h3>
-                <p>Get paid on the spot</p>
+              <div className="benefit-simple">
+                <span>💵</span>
+                <span>Instant Cash Payment</span>
               </div>
-              <div className="benefit">
-                <span className="benefit-icon">🚛</span>
-                <h3>Free Towing</h3>
-                <p>No hidden fees</p>
+              <div className="benefit-simple">
+                <span>🚛</span>
+                <span>Free Towing Service</span>
               </div>
-              <div className="benefit">
-                <span className="benefit-icon">📝</span>
-                <h3>Easy Process</h3>
-                <p>We handle all paperwork</p>
+              <div className="benefit-simple">
+                <span>📝</span>
+                <span>We Handle Paperwork</span>
               </div>
             </div>
             <motion.button
               className="get-quote-button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = 'tel:615-333-3704'}
+              onClick={() => window.location.href = 'tel:(615) 259-2727'}
             >
               Get an Instant Quote
             </motion.button>
@@ -799,30 +742,26 @@ const Home = () => {
             <h2>Ready to Get Help?</h2>
             <p>24/7 Emergency Service Available</p>
             <motion.a
-              href="tel:615-333-3704"
+              href="tel:(615) 259-2727"
               className="contact-phone-button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="phone-icon">📞</span>
-              615-333-3704
+              (615) 259-2727
             </motion.a>
             <motion.a
               href="mailto:Expresswaytow1@gmail.com"
               className="contact-email-button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="email-icon">✉️</span>
               Expresswaytow1@gmail.com
             </motion.a>
             <div className="contact-features">
               <div className="feature-item">
-                <span className="feature-icon">🕒</span>
                 <p>Available 24/7</p>
               </div>
               <div className="feature-item">
-                <span className="feature-icon">🚛</span>
                 <p>Fast Response Time</p>
               </div>
             </div>

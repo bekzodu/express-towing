@@ -1,18 +1,32 @@
 .footer {
-  background-color: #f8f9fa;
-  padding: 3rem 0;
-  margin-top: 4rem;
-  border-top: 1px solid #e9ecef;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #0f1a26 100%);
+  padding: 4rem 0 3rem;
+  margin-top: 0;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.5), transparent);
 }
 
 .footer-content {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-logo {
@@ -28,64 +42,92 @@
 .footer-logo-text {
   display: flex;
   flex-direction: column;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .footer-logo-express {
-  font-family: 'Orbitron', sans-serif;
   font-size: 1.2rem;
-  color: var(--primary-color);
-  letter-spacing: 2px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1.5px;
 }
 
 .footer-logo-towing {
-  font-family: 'Rajdhani', sans-serif;
   font-size: 1rem;
+  font-weight: 600;
   color: var(--secondary-color);
+  letter-spacing: 2px;
 }
 
 .footer-links {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   margin: 1rem 0;
 }
 
 .footer-links a {
-  color: var(--primary-color);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--secondary-color);
+  transition: width 0.3s ease;
 }
 
 .footer-links a:hover {
   color: var(--secondary-color);
 }
 
+.footer-links a:hover::after {
+  width: 100%;
+}
+
 .footer-credit {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
-  color: #6c757d;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  justify-content: center;
 }
 
 .bekxod-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--primary-color);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .bekxod-link:hover {
   color: var(--secondary-color);
 }
 
+.bekxod-link:hover .bekxod-logo {
+  transform: scale(1.1);
+}
+
 .bekxod-logo {
   height: 20px;
   width: auto;
+  transition: transform 0.2s ease;
 }
 
 @media (max-width: 768px) {
