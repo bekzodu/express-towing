@@ -1,101 +1,23 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import '../styles/HomeStyle.css';
-import towing3 from '../assets/towing3.jpeg';
-import towing1 from '../assets/towing1.png';
-import towing2 from '../assets/towing2.png';
-import coverMap from '../assets/cover-map.svg';
-import cashForJunk from '../assets/cash-for-junk.jpg';
-import impoundingImg from '../assets/impounding.jpg';
-import tnLogo from '../assets/tn-logo.svg';
-import towing4 from '../assets/towing4.png';
-import towing5 from '../assets/towing5.png';
-import Footer from '../components/Footer';
-import { Helmet } from 'react-helmet-async';
+'use client'
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [isBannerVisible, setIsBannerVisible] = React.useState(true);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleLinkClick = () => {
-    setIsMenuOpen(false);
-  };
-
-  return (
-    <>
-      {isBannerVisible && (
-        <motion.div 
-          className="promo-banner"
-          initial={{ height: 45, opacity: 1 }}
-          animate={{ height: 45, opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-        >
-          <div className="banner-content">
-            <span className="banner-text">
-              Need a tow? Call us now for a quote — (615) 259-2727
-            </span>
-            <motion.a
-              href="tel:(615) 259-2727"
-              className="banner-cta"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Call Now
-            </motion.a>
-          </div>
-          <button 
-            className="banner-close"
-            onClick={() => setIsBannerVisible(false)}
-            aria-label="Close banner"
-          >
-            ×
-          </button>
-        </motion.div>
-      )}
-      <nav className={`navbar ${!isBannerVisible ? 'banner-closed' : ''}`}>
-        <div className="nav-content">
-          <motion.div 
-            className="nav-logo"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <div className="logo-text">
-              <span className="logo-express">EXPRESSWAY</span>
-              <span className="logo-towing">TOWING</span>
-            </div>
-          </motion.div>
-
-          <button 
-            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="Menu"
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
-
-          <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="#services" onClick={handleLinkClick}>Services</a>
-            <a href="#about" onClick={handleLinkClick}>About</a>
-            <a href="#testimonials" onClick={handleLinkClick}>Testimonials</a>
-            <a href="#contact" onClick={handleLinkClick}>Contact</a>
-          </div>
-        </div>
-      </nav>
-    </>
-  );
-};
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import '../styles/HomeStyle.css'
 
 const Home = () => {
-  const [expandedFaq, setExpandedFaq] = React.useState(null);
-  const [showAllFaqs, setShowAllFaqs] = React.useState(false);
-  const [showAllServices, setShowAllServices] = React.useState(false);
-  const isMobile = window.innerWidth <= 768;
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [showAllFaqs, setShowAllFaqs] = useState(false)
+  const [showAllServices, setShowAllServices] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768)
+    const handleResize = () => setIsMobile(window.innerWidth <= 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const services = [
     { 
@@ -134,7 +56,7 @@ const Home = () => {
       icon: '💵',
       details: 'Free towing and same-day cash offers'
     }
-  ];
+  ]
 
   const testimonials = [
     {
@@ -152,94 +74,19 @@ const Home = () => {
       text: "They handled my heavy equipment transport with expertise. Highly recommended!",
       rating: 5
     }
-  ];
+  ]
 
-  const visibleServices = isMobile && !showAllServices ? services.slice(0, 3) : services;
+  const visibleServices = isMobile && !showAllServices ? services.slice(0, 3) : services
 
   return (
     <div className="home">
-      <Helmet>
-        <title>Expressway Towing | 24/7 Emergency Towing Nashville TN | (615) 259-2727</title>
-        <meta name="description" content="Nashville's trusted 24/7 towing service. Emergency roadside assistance, flatbed towing, heavy hauling, private property impounding & cash for junk cars. Serving Nashville, Franklin, Brentwood, Murfreesboro. Call (615) 259-2727 for fast response." />
-        <meta name="keywords" content="towing Nashville TN, 24/7 towing Nashville, emergency towing Nashville, roadside assistance Nashville, flatbed towing Nashville, tow truck Nashville, junk car removal Nashville, cash for junk cars Nashville, heavy duty towing Nashville, private property towing Nashville, Franklin TN towing, Brentwood TN towing" />
-        <meta property="og:title" content="Expressway Towing | 24/7 Emergency Towing Nashville TN" />
-        <meta property="og:description" content="Nashville's trusted 24/7 towing service. Emergency roadside assistance, flatbed towing, heavy hauling & cash for junk cars. Call (615) 259-2727." />
-        <meta property="og:image" content="https://expressway-towing.com/social-share.png" />
-        <meta property="og:url" content="https://expressway-towing.com" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://expressway-towing.com" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "TowingService",
-            "name": "Expressway Towing",
-            "image": "https://expressway-towing.com/social-share.png",
-            "description": "Nashville's trusted 24/7 towing service providing emergency roadside assistance, flatbed towing, heavy hauling, private property impounding, and cash for junk cars.",
-            "@id": "https://expressway-towing.com",
-            "url": "https://expressway-towing.com",
-            "telephone": "+16152592727",
-            "email": "Expresswaytow1@gmail.com",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Nashville",
-              "addressRegion": "TN",
-              "postalCode": "37203",
-              "addressCountry": "US"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 36.1627,
-              "longitude": -86.7816
-            },
-            "openingHoursSpecification": {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-              "opens": "00:00",
-              "closes": "23:59"
-            },
-            "sameAs": [
-              "https://www.facebook.com/expresswaytowing",
-              "https://www.instagram.com/expresswaytowing"
-            ],
-            "priceRange": "$$",
-            "areaServed": [
-              {"@type": "City", "name": "Nashville", "sameAs": "https://en.wikipedia.org/wiki/Nashville,_Tennessee"},
-              {"@type": "City", "name": "Franklin"},
-              {"@type": "City", "name": "Brentwood"},
-              {"@type": "City", "name": "Murfreesboro"},
-              {"@type": "City", "name": "Hendersonville"},
-              {"@type": "City", "name": "Lebanon"},
-              {"@type": "City", "name": "Smyrna"}
-            ],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Towing Services",
-              "itemListElement": [
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Emergency Towing"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Flatbed Towing"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Roadside Assistance"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Heavy Hauling"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Private Property Impounding"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cash for Junk Cars"}}
-              ]
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5",
-              "reviewCount": "127"
-            }
-          })}
-        </script>
-      </Helmet>
       <Navbar />
       
       {/* Hero Section */}
       <section 
         className="hero"
         style={{
-          background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(${towing3})`,
+          background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(/images/towing3.jpeg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -265,7 +112,7 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Service Showcase Section - New! */}
+      {/* Service Showcase Section */}
       <section className="service-showcase">
         <motion.div 
           className="showcase-container"
@@ -282,7 +129,7 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <img 
-              src={towing4} 
+              src="/images/towing4.png" 
               alt="Expressway Towing flatbed truck towing a luxury Mercedes-Benz vehicle in Nashville" 
             />
             <div className="showcase-caption">Luxury Vehicle Transport</div>
@@ -295,7 +142,7 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <img 
-              src={towing5} 
+              src="/images/towing5.png" 
               alt="Expressway Towing emergency service assisting a vehicle with a flat tire in Nashville" 
             />
             <div className="showcase-caption">Emergency Towing Service</div>
@@ -352,7 +199,7 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* About Section - Now with image */}
+      {/* About Section */}
       <section id="about" className="about">
         <div className="about-container">
           <motion.div
@@ -388,7 +235,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img src={towing1} alt="Professional towing service" />
+            <img src="/images/towing1.png" alt="Professional towing service" />
           </motion.div>
         </div>
       </section>
@@ -405,13 +252,13 @@ const Home = () => {
             <div className="coverage-header">
               <h2 className="coverage-title">Service Coverage Area</h2>
               <img 
-                src={tnLogo} 
+                src="/images/tn-logo.svg" 
                 alt="Tennessee" 
                 className="tn-logo" 
                 style={{
                   width: '150px',
                   height: 'auto',
-                  filter: ' brightness(1)' // This will make it visible if it's white
+                  filter: ' brightness(1)'
                 }}
               />
             </div>
@@ -471,7 +318,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section - Now with image */}
+      {/* Why Choose Us Section */}
       <section className="why-us">
         <div className="why-us-container">
           <motion.div
@@ -481,7 +328,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img src={towing2} alt="Reliable towing service" />
+            <img src="/images/towing2.png" alt="Reliable towing service" />
           </motion.div>
           <motion.div
             className="why-us-content"
@@ -524,7 +371,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img src={impoundingImg} alt="Professional impounding service" className="impound-image" />
+            <img src="/images/impounding.jpg" alt="Professional impounding service" className="impound-image" />
             <div className="image-overlay">
               <span className="overlay-text">Professional Impounding Services</span>
             </div>
@@ -579,7 +426,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <img src={cashForJunk} alt="Cash for junk cars" />
+            <img src="/images/cash-for-junk.jpg" alt="Cash for junk cars" />
           </motion.div>
           <motion.div
             className="junk-cars-content"
@@ -618,7 +465,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Emergency Tips Section - Now with timeline style */}
+      {/* Emergency Tips Section */}
       <section className="emergency-tips">
         <motion.div className="tips-timeline">
           <h2 className="section-title-left">Emergency Response Guide</h2>
@@ -770,7 +617,7 @@ const Home = () => {
       </section>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
