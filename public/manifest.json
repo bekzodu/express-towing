@@ -1,7 +1,7 @@
 {
   "short_name": "Expressway Towing",
-  "name": "Expressway Towing - 24/7 Nashville TN",
-  "description": "Nashville's trusted 24/7 towing service. Emergency roadside assistance, flatbed towing, heavy hauling & cash for junk cars.",
+  "name": "Expressway Towing — Don't Wait",
+  "description": "Stuck in Nashville? Live 24/7 dispatch. Typical arrival around 30 minutes. Call (615) 259-2727.",
   "icons": [
     {
       "src": "/favicon.ico",
@@ -38,8 +38,8 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#1a2a3a",
-  "background_color": "#ffffff",
+  "theme_color": "#1c1917",
+  "background_color": "#f8f5f0",
   "orientation": "portrait",
   "categories": ["business", "utilities"],
   "lang": "en-US"

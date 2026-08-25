@@ -1,140 +1,96 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import StickyCallBar from '../../components/StickyCallBar'
+import { SITE } from '../../lib/site'
 import '../../styles/SitelinkPages.css'
 
 export default function RepossessionTowing() {
   return (
-    <div className="sitelink-page">
+    <div className="sitelink-page repo-page">
       <Navbar />
-      
-      <section className="page-hero">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="hero-content"
-        >
-          <h1>Repossession Towing</h1>
-          <p className="hero-subtitle">Discrete and reliable service</p>
-          <p className="hero-description">Serving lenders and agencies</p>
-          <motion.a
-            href="tel:(615) 259-2727"
-            className="cta-button-large"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Call Now: (615) 259-2727
-          </motion.a>
-        </motion.div>
-      </section>
+      <main id="main">
+        <section className="page-hero">
+          <div className="container">
+            <p className="eyebrow">Lenders & agencies</p>
+            <h1>Repossession that stays professional</h1>
+            <p>Discreet, lawful recovery for banks, credit unions, and agencies. Secure storage, clean documentation, and operators who know Tennessee rules.</p>
+            <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Assign a recovery. Call ${SITE.phoneDisplay}`}>
+              Assign a recovery · {SITE.phoneDisplay}
+            </a>
+            <p className="hero-cta-note">A person answers. Same-day and after-hours assignments.</p>
+          </div>
+        </section>
 
-      <section className="page-content">
-        <div className="content-wrapper">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2>Professional Repossession Services</h2>
-            <p className="lead-text">
-              Expressway Towing provides discrete, professional repossession services for banks, credit unions, financial institutions, and recovery agencies throughout Nashville and Middle Tennessee. Our experienced team handles every repossession with efficiency, professionalism, and strict adherence to legal requirements.
+        <section className="page-content">
+          <div className="content-wrap">
+            <h2>Recovery partners, not cowboy towing</h2>
+            <p className="lead">
+              Expressway Towing handles voluntary and involuntary repossessions across Nashville and Middle Tennessee. Every assignment is run quietly, legally, and with a full paper trail.
             </p>
 
-            <div className="features-grid">
-              <div className="feature-box">
-                <div className="feature-icon">🤫</div>
-                <h3>Discrete Operations</h3>
-                <p>Low-profile service that minimizes attention and conflict</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">⚖️</div>
-                <h3>Legal Compliance</h3>
-                <p>Full compliance with state and federal repossession laws</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">🔒</div>
-                <h3>Secure Storage</h3>
-                <p>Gated, monitored storage facility for recovered vehicles</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">📱</div>
-                <h3>Real-Time Updates</h3>
-                <p>Immediate notification and detailed recovery reports</p>
-              </div>
+            <div className="feature-grid">
+              <article className="feature-card">
+                <div className="feature-icon">01</div>
+                <h3>Low profile</h3>
+                <p>Unmarked options and conflict-aware operators.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">02</div>
+                <h3>Legal compliance</h3>
+                <p>Tennessee and federal repossession requirements followed.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">03</div>
+                <h3>Secure storage</h3>
+                <p>Gated, monitored lot for recovered vehicles.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">04</div>
+                <h3>Live updates</h3>
+                <p>Immediate notice and detailed recovery reports.</p>
+              </article>
             </div>
 
-            <h2>Repossession Services We Provide</h2>
-            <ul className="services-list">
-              <li><strong>Voluntary Repossessions:</strong> Coordinated pick-up with borrower cooperation</li>
-              <li><strong>Involuntary Repossessions:</strong> Professional recovery with minimal confrontation</li>
-              <li><strong>Commercial Vehicles:</strong> Specialized equipment for trucks, vans, and commercial equipment</li>
-              <li><strong>Private Property Recovery:</strong> Trained in proper procedures for recovering from private property</li>
-              <li><strong>Skip Tracing Support:</strong> Assistance in locating hard-to-find vehicles</li>
-              <li><strong>Condition Documentation:</strong> Detailed photo documentation and vehicle condition reports</li>
+            <h2>Assignments we take</h2>
+            <ul className="service-list">
+              <li><strong>Voluntary surrenders:</strong> Coordinated pickup with the borrower.</li>
+              <li><strong>Involuntary recovery:</strong> Professional, no-drama retrieval.</li>
+              <li><strong>Commercial units:</strong> Trucks, vans, and equipment.</li>
+              <li><strong>Private property:</strong> Trained procedures — no breach of peace.</li>
+              <li><strong>Skip support:</strong> Help locating hard-to-find units.</li>
+              <li><strong>Condition reports:</strong> Photos and inventory of personal property.</li>
             </ul>
 
-            <div className="info-box">
-              <h3>Why Financial Institutions Choose Us</h3>
-              <p>
-                We understand the sensitive nature of repossession work. Our operators are trained in conflict de-escalation and always operate within legal boundaries. We maintain the highest standards of professionalism and discretion to protect your institution's reputation.
-              </p>
+            <div className="info-card">
+              <h3>Why lenders stay with us</h3>
               <ul>
-                <li>Licensed and bonded repossession agents</li>
-                <li>Comprehensive liability insurance</li>
+                <li>Licensed and bonded agents</li>
+                <li>Liability coverage on every job</li>
                 <li>24/7 availability for urgent recoveries</li>
-                <li>Competitive rates with volume discounts</li>
-                <li>Secure, gated storage facility</li>
+                <li>Volume pricing for ongoing accounts</li>
                 <li>Electronic reporting and documentation</li>
               </ul>
             </div>
 
-            <h2>Our Approach</h2>
-            <p>
-              Every repossession is handled professionally and discreetly. We arrive in unmarked vehicles when appropriate, work quickly and efficiently, and always prioritize safety. Our team is trained to remain calm and professional in all situations, de-escalating any potential conflicts.
-            </p>
-
-            <div className="info-box">
-              <h3>Legal Compliance & Safety</h3>
-              <p>
-                We strictly adhere to all Tennessee repossession laws and regulations, including:
-              </p>
-              <ul>
-                <li>Proper licensing and bonding requirements</li>
-                <li>Avoiding "breach of peace" situations</li>
-                <li>Respecting private property boundaries</li>
-                <li>Accurate documentation and reporting</li>
-                <li>Proper handling of personal property</li>
-              </ul>
-            </div>
-
-            <div className="cta-section">
-              <h3>Partner with Expressway Towing</h3>
-              <p>Reliable repossession services for lenders and agencies</p>
-              <div className="cta-buttons">
-                <motion.a
-                  href="tel:(615) 259-2727"
-                  className="btn-primary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Call (615) 259-2727
-                </motion.a>
-                <Link href="/" className="btn-secondary">
-                  Back to Home
-                </Link>
+            <div className="cta-box">
+              <h3>Set up a recovery account</h3>
+              <p>Talk to dispatch about lender onboarding, storage, and after-hours assignments.</p>
+              <div className="cta-row">
+                <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Assign a recovery. Call ${SITE.phoneDisplay}`}>
+                  Assign a recovery · {SITE.phoneDisplay}
+                </a>
+                <Link href="/" className="btn btn-ghost-dark">Back to home</Link>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
+          </div>
+        </section>
+      </main>
       <Footer />
+      <StickyCallBar />
     </div>
   )
 }

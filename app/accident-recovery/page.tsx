@@ -1,121 +1,92 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import StickyCallBar from '../../components/StickyCallBar'
+import { SITE } from '../../lib/site'
 import '../../styles/SitelinkPages.css'
 
 export default function AccidentRecovery() {
   return (
-    <div className="sitelink-page">
+    <div className="sitelink-page accident-page">
       <Navbar />
-      
-      <section className="page-hero">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="hero-content"
-        >
-          <h1>Accident & Recovery</h1>
-          <p className="hero-subtitle">Accidents, stuck vehicles, breakdowns</p>
-          <p className="hero-description">Professional, insured service</p>
-          <motion.a
-            href="tel:(615) 259-2727"
-            className="cta-button-large"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Call Now: (615) 259-2727
-          </motion.a>
-        </motion.div>
-      </section>
+      <main id="main">
+        <section className="page-hero">
+          <div className="container">
+            <p className="eyebrow">Crash? Get off the road</p>
+            <h1>Accident? We’ll clear you out — not later, now.</h1>
+            <p>Collisions, ditches, rollovers. We send the right truck the first time so you are not waiting on a second company.</p>
+            <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+              Get a truck now · {SITE.phoneDisplay}
+            </a>
+            <p className="hero-cta-note">Live dispatch. Typical arrival around 30 minutes.</p>
+          </div>
+        </section>
 
-      <section className="page-content">
-        <div className="content-wrapper">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2>Professional Accident Recovery Services</h2>
-            <p className="lead-text">
-              When accidents happen, you need a towing service you can trust. Expressway Towing provides professional accident recovery and vehicle extraction services throughout Nashville and surrounding areas. We work safely and efficiently to clear accident scenes and transport damaged vehicles.
+        <section className="page-content">
+          <div className="content-wrap">
+            <h2>When the scene is chaotic, the tow should not be</h2>
+            <p className="lead">
+              Expressway Towing clears accident scenes across Nashville and Middle Tennessee. We extract damaged vehicles without making a bad day worse — then deliver them to the shop, yard, or address you choose.
             </p>
 
-            <div className="features-grid">
-              <div className="feature-box">
-                <div className="feature-icon">🚨</div>
-                <h3>Accident Scene Response</h3>
-                <p>Quick arrival to accident scenes with proper safety equipment</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">🛡️</div>
-                <h3>Fully Insured</h3>
-                <p>Complete insurance coverage for your peace of mind</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">🏆</div>
-                <h3>Professional Team</h3>
-                <p>Trained operators with years of accident recovery experience</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">📋</div>
-                <h3>Insurance Coordination</h3>
-                <p>We work directly with your insurance company</p>
-              </div>
+            <div className="feature-grid">
+              <article className="feature-card">
+                <div className="feature-icon">01</div>
+                <h3>On-scene response</h3>
+                <p>Quick arrival with cones, lighting, and recovery gear.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">02</div>
+                <h3>Fully insured</h3>
+                <p>Coverage that protects you, the vehicle, and the property.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">03</div>
+                <h3>Trained operators</h3>
+                <p>Years of crash recovery — not a random hook-and-go.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">04</div>
+                <h3>Insurance ready</h3>
+                <p>We bill carriers directly and document the condition.</p>
+              </article>
             </div>
 
-            <h2>Comprehensive Recovery Services</h2>
-            <ul className="services-list">
-              <li><strong>Accident Towing:</strong> Safe removal of vehicles from accident scenes to repair shops or storage facilities</li>
-              <li><strong>Vehicle Extraction:</strong> Recovery of stuck or disabled vehicles from ditches, embankments, or difficult terrain</li>
-              <li><strong>Rollover Recovery:</strong> Specialized equipment and techniques for overturned vehicles</li>
-              <li><strong>Multi-Vehicle Accidents:</strong> Coordinated response for accidents involving multiple vehicles</li>
-              <li><strong>Debris Cleanup:</strong> Assistance with clearing accident debris to reopen roadways</li>
-              <li><strong>Damage Documentation:</strong> Photos and documentation for insurance claims</li>
+            <h2>Recovery services</h2>
+            <ul className="service-list">
+              <li><strong>Accident towing:</strong> Safe removal from the scene to a shop or storage.</li>
+              <li><strong>Winch-outs:</strong> Ditches, embankments, mud, and snow.</li>
+              <li><strong>Rollover recovery:</strong> Specialized equipment for overturned vehicles.</li>
+              <li><strong>Multi-car scenes:</strong> Coordinated response when more than one vehicle is involved.</li>
+              <li><strong>Debris cleanup:</strong> Help reopening the lane faster.</li>
+              <li><strong>Photo documentation:</strong> Condition photos for the claim file.</li>
             </ul>
 
-            <div className="info-box">
-              <h3>Why Choose Expressway for Accident Recovery?</h3>
+            <div className="info-card">
+              <h3>Why people call Expressway after a crash</h3>
               <p>
-                With specialized equipment including flatbed tow trucks and heavy-duty recovery vehicles, we handle everything from minor fender-benders to major collisions. Our operators are trained in safe vehicle extraction and accident scene management, ensuring your vehicle is handled with care during a stressful situation.
-              </p>
-              <p>
-                We understand that accidents are traumatic. That's why we work quickly and professionally to get your vehicle safely transported while treating you with compassion and respect.
+                Flatbeds and heavy wreckers mean we can move everything from a fender-bender to a major collision. Operators are trained in scene safety, and we treat the driver like a person — not a ticket number.
               </p>
             </div>
 
-            <h2>Working with Insurance Companies</h2>
-            <p>
-              We have extensive experience working with all major insurance providers. We can bill your insurance directly and provide all necessary documentation for your claim. Our transparent pricing and professional service make the insurance process smoother.
-            </p>
-
-            <div className="cta-section">
-              <h3>Need Accident Recovery Assistance?</h3>
-              <p>Available 24/7 for immediate accident response</p>
-              <div className="cta-buttons">
-                <motion.a
-                  href="tel:(615) 259-2727"
-                  className="btn-primary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Call (615) 259-2727
-                </motion.a>
-                <Link href="/" className="btn-secondary">
-                  Back to Home
-                </Link>
+            <div className="cta-box">
+              <h3>Need recovery now?</h3>
+              <p>Stay safe, keep hazards on, and call. We dispatch on the line.</p>
+              <div className="cta-row">
+                <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+                  Get a truck now · {SITE.phoneDisplay}
+                </a>
+                <Link href="/" className="btn btn-ghost-dark">Not stranded? Go home</Link>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
+          </div>
+        </section>
+      </main>
       <Footer />
+      <StickyCallBar />
     </div>
   )
 }

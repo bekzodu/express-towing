@@ -1,116 +1,95 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import StickyCallBar from '../../components/StickyCallBar'
+import { SITE } from '../../lib/site'
 import '../../styles/SitelinkPages.css'
 
 export default function EmergencyTowing() {
   return (
-    <div className="sitelink-page">
+    <div className="sitelink-page emergency-page">
       <Navbar />
-      
-      <section className="page-hero">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="hero-content"
-        >
-          <h1>Emergency Towing</h1>
-          <p className="hero-subtitle">Fast response, 24/7 availability</p>
-          <p className="hero-description">Upfront pricing, no surprises</p>
-          <motion.a
-            href="tel:(615) 259-2727"
-            className="cta-button-large"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Call Now: (615) 259-2727
-          </motion.a>
-        </motion.div>
-      </section>
+      <main id="main">
+        <section className="page-hero">
+          <div className="container">
+            <p className="eyebrow">Don’t sit on the shoulder</p>
+            <h1>Need a tow right now? We’ll dispatch on this call.</h1>
+            <p>A person answers. Typical arrival around 30 minutes across Nashville. No waitlist. No “we’ll try to fit you in.”</p>
+            <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+              Get a truck now · {SITE.phoneDisplay}
+            </a>
+            <p className="hero-cta-note">Takes about 20 seconds. No hold music.</p>
+          </div>
+        </section>
 
-      <section className="page-content">
-        <div className="content-wrapper">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2>When You Need Help Fast, We're Here</h2>
-            <p className="lead-text">
-              Car trouble doesn't wait for business hours. Whether you're stranded on the highway at 3 AM or dealing with a breakdown during rush hour, Expressway Towing provides rapid emergency response 24/7, 365 days a year.
+        <section className="page-content">
+          <div className="content-wrap">
+            <h2>When you need help fast, a truck starts moving</h2>
+            <p className="lead">
+              Breakdowns do not wait for business hours. You call, a person answers, and we send the nearest licensed truck — highway, parking garage, or neighborhood street. Typical Nashville arrival is around 30 minutes, not later today.
             </p>
 
-            <div className="features-grid">
-              <div className="feature-box">
-                <div className="feature-icon">⚡</div>
-                <h3>30-Minute Response</h3>
-                <p>Average response time across the Nashville metro area</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">🌙</div>
-                <h3>24/7 Availability</h3>
-                <p>Day or night, weekday or holiday - we're always ready</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">💰</div>
-                <h3>Upfront Pricing</h3>
-                <p>Clear quotes before we start - no hidden fees</p>
-              </div>
-              <div className="feature-box">
-                <div className="feature-icon">🚛</div>
-                <h3>Professional Fleet</h3>
-                <p>Modern equipment and experienced, licensed operators</p>
-              </div>
+            <div className="feature-grid">
+              <article className="feature-card">
+                <div className="feature-icon">30</div>
+                <h3>~30 min arrival</h3>
+                <p>Typical response across the Nashville metro.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">24</div>
+                <h3>Always open</h3>
+                <p>Nights, weekends, and holidays included.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">$</div>
+                <h3>Price before we roll</h3>
+                <p>Clear quotes. No mystery add-ons on scene.</p>
+              </article>
+              <article className="feature-card">
+                <div className="feature-icon">TN</div>
+                <h3>Licensed fleet</h3>
+                <p>Modern trucks and insured, trained operators.</p>
+              </article>
             </div>
 
-            <h2>Emergency Services We Provide</h2>
-            <ul className="services-list">
-              <li><strong>Accident Towing:</strong> Quick response to accident scenes with professional vehicle recovery</li>
-              <li><strong>Breakdown Assistance:</strong> Engine failure, transmission issues, or other mechanical problems</li>
-              <li><strong>Roadside Emergencies:</strong> Flat tires, dead batteries, lockouts, and fuel delivery</li>
-              <li><strong>Highway Rescue:</strong> Safe extraction from dangerous highway situations</li>
-              <li><strong>Weather-Related:</strong> Help during storms, floods, or other severe weather conditions</li>
+            <h2>Emergency work we handle</h2>
+            <ul className="service-list">
+              <li><strong>Accident towing:</strong> Fast, careful recovery from crash scenes.</li>
+              <li><strong>Breakdowns:</strong> Engine, transmission, or anything that leaves you stuck.</li>
+              <li><strong>Roadside rescue:</strong> Flat tires, dead batteries, lockouts, and fuel.</li>
+              <li><strong>Highway extraction:</strong> Safe pull-offs from I-40, I-24, I-65, and I-440.</li>
+              <li><strong>Weather events:</strong> Storms, ice, and flooding do not pause dispatch.</li>
             </ul>
 
-            <div className="cta-section">
-              <h3>Need Emergency Towing Now?</h3>
-              <p>Our dispatch team is standing by to send help your way</p>
-              <div className="cta-buttons">
-                <motion.a
-                  href="tel:(615) 259-2727"
-                  className="btn-primary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Call (615) 259-2727
-                </motion.a>
-                <Link href="/" className="btn-secondary">
-                  Back to Home
-                </Link>
-              </div>
-            </div>
-
-            <div className="info-box">
-              <h3>What to Do in an Emergency</h3>
+            <div className="info-card">
+              <h3>If you are stranded right now</h3>
               <ol>
-                <li>Move to a safe location if possible</li>
-                <li>Turn on your hazard lights</li>
-                <li>Call us at (615) 259-2727</li>
-                <li>Provide your location and situation details</li>
-                <li>Stay in a safe place while help arrives</li>
+                <li>Move as far from traffic as you can.</li>
+                <li>Turn on hazard lights.</li>
+                <li>Call {SITE.phoneDisplay}.</li>
+                <li>Share your location and what happened.</li>
+                <li>Stay in a safe place until the truck arrives.</li>
               </ol>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
+            <div className="cta-box">
+              <h3>Need a truck now?</h3>
+              <p>A person answers. We dispatch on this call. Typical arrival around 30 minutes.</p>
+              <div className="cta-row">
+                <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+                  Get a truck now · {SITE.phoneDisplay}
+                </a>
+                <Link href="/" className="btn btn-ghost-dark">Not stranded? Go home</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
+      <StickyCallBar />
     </div>
   )
 }

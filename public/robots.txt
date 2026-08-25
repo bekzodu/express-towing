@@ -1,6 +1,4 @@
-# *
 User-agent: *
 Allow: /
 
-# Sitemaps
 Sitemap: https://expressway-towing.com/sitemap.xml

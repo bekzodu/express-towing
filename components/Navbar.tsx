@@ -1,88 +1,91 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { SITE } from '../lib/site'
+import { IconClose, IconMenu, IconPhone } from './Icons'
 import '../styles/Navbar.css'
 
+const links = [
+  { href: '/#services', label: 'Services' },
+  { href: '/emergency-towing', label: 'Emergency' },
+  { href: '/accident-recovery', label: 'Accidents' },
+  { href: '/repossession-towing', label: 'Repossession' },
+  { href: '/service-areas', label: 'Areas' },
+]
+
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isBannerVisible, setIsBannerVisible] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [bannerOpen, setBannerOpen] = useState(true)
+  const [scrolled, setScrolled] = useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-  const handleLinkClick = () => {
-    setIsMenuOpen(false)
-  }
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <>
-      {isBannerVisible && (
-        <motion.div 
-          className="promo-banner"
-          initial={{ height: 45, opacity: 1 }}
-          animate={{ height: 45, opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-        >
-          <div className="banner-content">
-            <span className="banner-text">
-              Need a tow? Call us now for a quote — (615) 259-2727
-            </span>
-            <motion.a
-              href="tel:(615) 259-2727"
-              className="banner-cta"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Call Now
-            </motion.a>
-          </div>
-          <button 
-            className="banner-close"
-            onClick={() => setIsBannerVisible(false)}
-            aria-label="Close banner"
-          >
+      {bannerOpen && (
+        <div className="promo-banner">
+          <p>
+            <span className="open-tag">Live now</span>
+            <span className="banner-full">Stuck? Dispatch answers. Typical arrival ~30 min.</span>
+            <span className="banner-short">~30 min arrival</span>
+          </p>
+          <a href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+            {SITE.phoneDisplay}
+          </a>
+          <button type="button" className="banner-close" onClick={() => setBannerOpen(false)} aria-label="Dismiss banner">
             ×
           </button>
-        </motion.div>
+        </div>
       )}
-      <nav className={`navbar ${!isBannerVisible ? 'banner-closed' : ''}`}>
+
+      <header className={`navbar ${bannerOpen ? '' : 'banner-closed'} ${scrolled ? 'is-scrolled' : ''}`}>
         <div className="nav-content">
-          <Link href="/">
-            <motion.div 
-              className="nav-logo"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="logo-text">
-                <span className="logo-express">EXPRESSWAY</span>
-                <span className="logo-towing">TOWING</span>
-              </div>
-            </motion.div>
+          <Link href="/" className="nav-logo" onClick={closeMenu} aria-label="Expressway Towing home">
+            <img src="/images/logo-expressway.png" alt="Expressway Towing" className="nav-logo-img" />
           </Link>
 
-          <button 
-            className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="Menu"
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
+          <nav className={`nav-links ${menuOpen ? 'active' : ''}`} aria-label="Primary">
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} onClick={closeMenu}>
+                {link.label}
+              </Link>
+            ))}
+            <a className="nav-call" href={SITE.phoneTel} onClick={closeMenu} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+              <IconPhone className="icon" />
+              Get a truck now
+            </a>
+          </nav>
 
-          <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <Link href="/#services" onClick={handleLinkClick}>Services</Link>
-            <Link href="/emergency-towing" onClick={handleLinkClick}>Emergency Towing</Link>
-            <Link href="/accident-recovery" onClick={handleLinkClick}>Accident Recovery</Link>
-            <Link href="/repossession-towing" onClick={handleLinkClick}>Repossession</Link>
-            <Link href="/service-areas" onClick={handleLinkClick}>Service Areas</Link>
-            <Link href="/#contact" onClick={handleLinkClick}>Contact</Link>
-          </div>
+          <a className="nav-call nav-call-desktop" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+            <IconPhone className="icon" />
+            Get a truck now
+          </a>
+
+          <button
+            className={`hamburger ${menuOpen ? 'active' : ''}`}
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <IconClose className="icon" /> : <IconMenu className="icon" />}
+          </button>
         </div>
-      </nav>
+      </header>
     </>
   )
 }

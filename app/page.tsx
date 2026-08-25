@@ -1,623 +1,454 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import StickyCallBar from '../components/StickyCallBar'
+import {
+  IconArrow,
+  IconBuilding,
+  IconCash,
+  IconCheck,
+  IconClock,
+  IconPhone,
+  IconShield,
+  IconStar,
+  IconTruck,
+} from '../components/Icons'
+import { SERVICE_AREAS, SITE } from '../lib/site'
 import '../styles/HomeStyle.css'
 
-const Home = () => {
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
-  const [showAllFaqs, setShowAllFaqs] = useState(false)
-  const [showAllServices, setShowAllServices] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-80px' },
+  transition: { duration: 0.5 },
+}
 
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= 768)
-    const handleResize = () => setIsMobile(window.innerWidth <= 768)
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+const services = [
+  {
+    title: 'Emergency Towing',
+    copy: 'Breakdowns and highway rescue. We dispatch on the call — you are not waiting in a queue.',
+    href: '/emergency-towing',
+  },
+  {
+    title: 'Flatbed Towing',
+    copy: 'Damage-free transport for luxury, classic, lowered, and AWD vehicles. The truck that fits, the first time.',
+    href: '/#contact',
+  },
+  {
+    title: 'Roadside Assistance',
+    copy: 'Jump starts, tire changes, fuel, lockouts. Often faster than a tow — we tell you which on the phone.',
+    href: '/#contact',
+  },
+  {
+    title: 'Accident Recovery',
+    copy: 'Clear the scene, document the damage, get you off the shoulder. Insurance-ready from the start.',
+    href: '/accident-recovery',
+  },
+  {
+    title: 'Heavy Hauling',
+    copy: 'RVs, box trucks, and equipment. We send heavy gear instead of making you wait for a second truck.',
+    href: '/#contact',
+  },
+  {
+    title: 'Cash for Junk Cars',
+    copy: 'Same-day offer and pickup. The car that’s been sitting does not have to sit another week.',
+    href: '/#junk',
+  },
+]
 
-  const services = [
-    { 
-      title: 'Flatbed Towing',
-      description: 'Secure transport for luxury and damaged vehicles',
-      icon: '🚛',
-      details: 'Safe, damage-free towing with state-of-the-art flatbed trucks'
-    },
-    { 
-      title: 'Emergency Towing',
-      description: 'Fast 24/7 response when you need it most',
-      icon: '🆘',
-      details: 'Average 30-minute response time across Nashville area'
-    },
-    { 
-      title: 'Roadside Assistance',
-      description: 'Jump starts, tire changes, and lockout service',
-      icon: '🔧',
-      details: 'Quick solutions to get you back on the road'
-    },
-    { 
-      title: 'Long-Distance',
-      description: 'Interstate vehicle transportation with tracking',
-      icon: '🛣️',
-      details: 'Fully insured cross-state transport services'
-    },
-    { 
-      title: 'Heavy Hauling',
-      description: 'Specialized equipment for large vehicles',
-      icon: '💪',
-      details: 'Commercial trucks, RVs, and heavy machinery'
-    },
-    { 
-      title: 'Cash for Junk Cars',
-      description: 'Instant payment for vehicles in any condition',
-      icon: '💵',
-      details: 'Free towing and same-day cash offers'
-    }
-  ]
+const steps = [
+  {
+    n: '01',
+    title: 'Call — about 20 seconds',
+    copy: 'Say where you are. We quote before we roll. A person picks up. No hold music.',
+  },
+  {
+    n: '02',
+    title: 'We send the nearest truck',
+    copy: 'Local operators who already know I-24, I-40, I-65, and the side streets GPS gets wrong.',
+  },
+  {
+    n: '03',
+    title: 'You’re off the shoulder',
+    copy: 'Back on the road, or delivered to a shop, home, or lot. Waiting is the part we skip.',
+  },
+]
 
-  const testimonials = [
-    {
-      name: "John D.",
-      text: "Saved me when I was stranded at 2 AM. Professional and quick service!",
-      rating: 5
-    },
-    {
-      name: "Sarah M.",
-      text: "Best towing service in the area. Fair prices and friendly staff.",
-      rating: 5
-    },
-    {
-      name: "Mike R.",
-      text: "They handled my heavy equipment transport with expertise. Highly recommended!",
-      rating: 5
-    }
-  ]
+const reasons = [
+  'No waitlist — we dispatch the nearest truck on the call',
+  'A person answers. 24/7. Including 2 a.m. and holidays.',
+  'Typical Nashville arrival around 30 minutes',
+  'Upfront quotes. No surprise fees after the hook.',
+  'Flatbeds ready so you are not waiting on a second truck',
+  'Local crews who know the interstates and the back roads',
+]
 
-  const visibleServices = isMobile && !showAllServices ? services.slice(0, 3) : services
+const reviews = [
+  {
+    name: 'James R.',
+    place: 'East Nashville',
+    text: 'Stranded on I-40 after midnight. They answered immediately and were there before I finished my coffee. That is the whole job.',
+  },
+  {
+    name: 'Melissa K.',
+    place: 'Franklin',
+    text: 'I did not have time to sit around. They quoted, dispatched, and kept me updated. I was off the shoulder faster than I expected.',
+  },
+  {
+    name: 'David P.',
+    place: 'Murfreesboro',
+    text: 'Needed a lot tow the same day. No “we’ll try to squeeze you in.” They just came.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'How quickly can you arrive?',
+    a: 'Typical arrival is around 30 minutes in most Nashville-area locations. We dispatch the nearest truck on the call — there is no waitlist and no appointment.',
+  },
+  {
+    q: 'Do I have to wait on hold?',
+    a: 'No. Dispatch is live 24/7. A person answers, takes your location, and sends a truck on that same call.',
+  },
+  {
+    q: 'Do you work with insurance?',
+    a: 'Yes. We work with most major insurers and roadside programs and can help coordinate the claim so you are not stuck in the middle.',
+  },
+  {
+    q: 'What payment methods do you take?',
+    a: 'Cards, cash, Apple Pay, Google Pay, and direct insurance billing when the service is covered.',
+  },
+  {
+    q: 'What vehicles can you tow?',
+    a: 'Cars, trucks, SUVs, motorcycles, RVs, and commercial equipment. The fleet includes flatbeds, wheel-lifts, and heavy-duty wreckers — so you are not waiting for a second company.',
+  },
+  {
+    q: 'Do you offer long-distance towing?',
+    a: 'Yes. We run statewide and interstate transport with secure tie-downs and updates while your vehicle is in transit.',
+  },
+  {
+    q: 'Are you open on holidays?',
+    a: 'Always. We operate 24/7, 365 days a year — nights, weekends, and holidays included. Breakdowns do not wait, so neither do we.',
+  },
+  {
+    q: 'Which cities do you cover?',
+    a: 'Nashville, Franklin, Brentwood, Murfreesboro, Hendersonville, Lebanon, and Smyrna, plus surrounding Middle Tennessee. If you do not see your town, call anyway — we will tell you an honest ETA in seconds.',
+  },
+]
+
+export default function Home() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0)
 
   return (
     <div className="home">
       <Navbar />
-      
-      {/* Hero Section */}
-      <section 
-        className="hero"
-        style={{
-          background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(/images/towing3.jpeg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-        aria-label="Hero section"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="hero-content"
-        >
-          <h1>Expressway Towing</h1>
-          <h2 className="hero-subtitle">Professional Towing & Roadside Assistance in Nashville</h2>
-          <motion.a
-            href="tel:(615) 259-2727"
-            className="cta-button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Call Expressway Towing at (615) 259-2727"
-          >
-            Call Now: (615) 259-2727
-          </motion.a>
-        </motion.div>
-      </section>
 
-      {/* Service Showcase Section */}
-      <section className="service-showcase">
-        <motion.div 
-          className="showcase-container"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <motion.div 
-            className="showcase-image"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img 
-              src="/images/towing4.png" 
-              alt="Expressway Towing flatbed truck towing a luxury Mercedes-Benz vehicle in Nashville" 
-            />
-            <div className="showcase-caption">Luxury Vehicle Transport</div>
-          </motion.div>
-          <motion.div 
-            className="showcase-image"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img 
-              src="/images/towing5.png" 
-              alt="Expressway Towing emergency service assisting a vehicle with a flat tire in Nashville" 
-            />
-            <div className="showcase-caption">Emergency Towing Service</div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Enhanced Services Section */}
-      <section id="services" className="services">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="services-container"
-        >
-          <h2 className="section-title">Our Services</h2>
-          <p className="services-subtitle">
-            Professional towing and roadside assistance when you need it
-          </p>
-          <div className="services-grid">
-            {visibleServices.map((service, index) => (
-              <motion.div
-                key={index}
-                className="service-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: index * 0.1,
-                  ease: [0.4, 0, 0.2, 1]
-                }}
-                viewport={{ once: true, margin: "-100px" }}
-              >
-                <span className="icon">{service.icon}</span>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-                <p className="service-details">{service.details}</p>
-              </motion.div>
-            ))}
+      <main id="main">
+        <section className="hero" aria-label="Expressway Towing emergency dispatch">
+          <div className="hero-overlay" />
+          <div className="container hero-grid">
+            <motion.div {...fadeUp} className="hero-copy">
+              <img src="/images/logo-expressway.png" alt="Expressway Towing" className="hero-logo" />
+              <p className="hero-kicker">Live dispatch · A person answers</p>
+              <h1>Stuck? Don’t wait. Get a truck rolling now.</h1>
+              <p className="hero-lead">
+                One call. We send the closest truck. Most Nashville pickups land around 30 minutes —
+                not later today, not after lunch.
+              </p>
+              <div className="hero-actions">
+                <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+                  <IconPhone />
+                  Get a truck now · {SITE.phoneDisplay}
+                </a>
+              </div>
+              <p className="cta-note">Takes about 20 seconds. No hold music. No waitlist.</p>
+              <ul className="hero-trust">
+                <li>
+                  <IconClock className="icon" /> Typical arrival ~30 min
+                </li>
+                <li>
+                  <IconShield className="icon" /> Licensed & insured
+                </li>
+                <li>
+                  <IconStar className="icon" /> 5.0 from local drivers
+                </li>
+              </ul>
+              <a className="btn-quiet" href="#services">
+                Not stranded? See other services
+              </a>
+            </motion.div>
           </div>
-          {isMobile && !showAllServices && (
-            <motion.button
-              className="show-all-services"
-              onClick={() => setShowAllServices(true)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Show All Services
-            </motion.button>
-          )}
-        </motion.div>
-      </section>
+        </section>
 
-      {/* About Section */}
-      <section id="about" className="about">
-        <div className="about-container">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="about-content"
-          >
-            <h2>24/7 Service You Can Trust</h2>
-            <p>
-              Professional towing and roadside assistance across Nashville. Our experienced team is ready to help you get back on the road safely.
-            </p>
-            <div className="about-highlights">
-              <div className="highlight-item">
-                <span className="highlight-number">24/7</span>
-                <span className="highlight-label">Available</span>
-              </div>
-              <div className="highlight-item">
-                <span className="highlight-number">30min</span>
-                <span className="highlight-label">Response</span>
-              </div>
-              <div className="highlight-item">
-                <span className="highlight-number">100%</span>
-                <span className="highlight-label">Licensed</span>
-              </div>
+        <section className="stats-bar" aria-label="Company highlights">
+          <div className="container stats-grid">
+            <div>
+              <strong>Live</strong>
+              <span>A person answers 24/7</span>
             </div>
-          </motion.div>
-          <motion.div
-            className="about-image"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img src="/images/towing1.png" alt="Professional towing service" />
-          </motion.div>
-        </div>
-      </section>
+            <div>
+              <strong>~30 min</strong>
+              <span>Typical Nashville arrival</span>
+            </div>
+            <div>
+              <strong>No waitlist</strong>
+              <span>Nearest truck, on the call</span>
+            </div>
+            <div>
+              <strong>7 cities</strong>
+              <span>Middle Tennessee coverage</span>
+            </div>
+          </div>
+        </section>
 
-      {/* Coverage Area Section */}
-      <section className="coverage">
-        <div className="map-background">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="coverage-content"
-          >
-            <div className="coverage-header">
-              <h2 className="coverage-title">Service Coverage Area</h2>
-              <img 
-                src="/images/tn-logo.svg" 
-                alt="Tennessee" 
-                className="tn-logo" 
-                style={{
-                  width: '150px',
-                  height: 'auto',
-                  filter: ' brightness(1)'
-                }}
-              />
-            </div>
-            <div className="areas-flex">
-              {["Nashville", "Franklin", "Brentwood", "Murfreesboro", "Hendersonville", "Lebanon", "Smyrna"].map((area, index) => (
-                <motion.div
-                  key={index}
-                  className="area-pin"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <span className="area-name">{area}</span>
-                </motion.div>
+        <section id="services" className="section services">
+          <div className="container">
+            <motion.div {...fadeUp} className="section-head">
+              <p className="section-kicker">What we do</p>
+              <h2 className="section-title">When you can’t wait, this is what we send.</h2>
+              <p className="section-lead">
+                You don’t need a menu. You need the right truck moving toward you. We figure that out on the call.
+              </p>
+            </motion.div>
+            <ol className="service-index">
+              {services.map((service, index) => (
+                <motion.li key={service.title} {...fadeUp}>
+                  <Link href={service.href}>
+                    <span className="service-num">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="service-body">
+                      <h3>{service.title}</h3>
+                      <p>{service.copy}</p>
+                    </span>
+                    <span className="service-go" aria-hidden="true">
+                      <IconArrow />
+                    </span>
+                  </Link>
+                </motion.li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="proof">
+          <div className="container proof-grid">
+            <motion.figure {...fadeUp}>
+              <img src="/images/towing4.png" alt="Expressway Towing flatbed carrying a luxury Mercedes-Benz in Nashville" />
+              <figcaption>Flatbed transport for high-value vehicles</figcaption>
+            </motion.figure>
+            <motion.figure {...fadeUp}>
+              <img src="/images/towing5.png" alt="Expressway Towing operator helping a driver with a roadside tire issue" />
+              <figcaption>Roadside help that gets you moving</figcaption>
+            </motion.figure>
+          </div>
+        </section>
+
+        <section className="section process">
+          <div className="container">
+            <motion.div {...fadeUp} className="section-head">
+              <p className="section-kicker">How it works</p>
+              <h2 className="section-title">Three steps. None of them are “sit tight.”</h2>
+            </motion.div>
+            <ol className="process-board">
+              {steps.map((step) => (
+                <motion.li key={step.n} {...fadeUp}>
+                  <b>{step.n}</b>
+                  <h3>{step.title}</h3>
+                  <p>{step.copy}</p>
+                </motion.li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section id="about" className="section why">
+          <div className="container why-grid">
+            <motion.div className="why-photo" {...fadeUp}>
+              <img src="/images/towing1.png" alt="Expressway Towing truck recovering a vehicle in Nashville" />
+            </motion.div>
+            <motion.div {...fadeUp}>
+              <p className="section-kicker">Why drivers call us</p>
+              <h2 className="section-title">The worst part of a breakdown is waiting.</h2>
+              <p className="section-lead">
+                We skip that. Expressway is a Nashville operation — not a call center flipping jobs to whoever is cheapest.
+                You talk to dispatch, a truck starts moving, and you’re not guessing when help shows up.
+              </p>
+              <ul className="why-list">
+                {reasons.map((item) => (
+                  <li key={item}>
+                    <IconCheck className="icon" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <a className="btn btn-dark" href={SITE.phoneTel}>
+                <IconPhone />
+                Talk to dispatch — now
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="section coverage">
+          <div className="container">
+            <motion.div {...fadeUp} className="section-head light">
+              <p className="section-kicker">Coverage</p>
+              <h2 className="section-title">Closer trucks. Shorter wait.</h2>
+              <p className="section-lead">
+                We stage in Nashville and the surrounding cities so you are not waiting on a truck from the other side of the state.
+              </p>
+            </motion.div>
+            <ul className="coverage-board">
+              {SERVICE_AREAS.map((area) => (
+                <li key={area.name}>
+                  <Link href="/service-areas">
+                    <strong>{area.name}</strong>
+                    <span className="coverage-rule" aria-hidden="true" />
+                    <em>{area.time}</em>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section id="testimonials" className="section reviews">
+          <div className="container">
+            <motion.div {...fadeUp} className="section-head">
+              <p className="section-kicker">Social proof</p>
+              <h2 className="section-title">People remember who showed up first.</h2>
+            </motion.div>
+            <div className="reviews-grid">
+              {reviews.map((review) => (
+                <motion.blockquote key={review.name} className="review-card" {...fadeUp}>
+                  <div className="stars" aria-label="5 star review">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <IconStar key={i} />
+                    ))}
+                  </div>
+                  <p>“{review.text}”</p>
+                  <footer>
+                    <strong>{review.name}</strong>
+                    <span>{review.place}</span>
+                  </footer>
+                </motion.blockquote>
               ))}
             </div>
-            <motion.p 
-              className="coverage-contact"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              Contact us to see if your area is covered
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="testimonials">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="section-title-centered"
-        >
-          What Our Customers Say
-        </motion.h2>
-        <div className="testimonials-carousel">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              className="testimonial-card-modern"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -3 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <div className="quote-mark">"</div>
-              <p className="testimonial-text">{testimonial.text}</p>
-              <div className="testimonial-footer">
-                <div className="stars">{"★".repeat(testimonial.rating)}</div>
-                <h4 className="testimonial-name">— {testimonial.name}</h4>
-              </div>
+        <section id="impound" className="section split-dark">
+          <div className="container split-grid">
+            <motion.div className="split-photo" {...fadeUp}>
+              <img src="/images/impounding.jpg" alt="Private property impound towing in Nashville" />
             </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="why-us">
-        <div className="why-us-container">
-          <motion.div
-            className="why-us-image"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img src="/images/towing2.png" alt="Reliable towing service" />
-          </motion.div>
-          <motion.div
-            className="why-us-content"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Why Choose Us</h2>
-            <p className="why-us-intro">Fast, reliable, and professional service across Nashville and surrounding areas.</p>
-            <div className="features-list">
-              <div className="feature-simple">
-                <span className="feature-check">✓</span>
-                <span>24/7 Emergency Response</span>
-              </div>
-              <div className="feature-simple">
-                <span className="feature-check">✓</span>
-                <span>Licensed & Insured</span>
-              </div>
-              <div className="feature-simple">
-                <span className="feature-check">✓</span>
-                <span>Experienced Operators</span>
-              </div>
-              <div className="feature-simple">
-                <span className="feature-check">✓</span>
-                <span>Competitive Pricing</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Property Management & Impounding Services */}
-      <section className="property-impound">
-        <div className="impound-container">
-          <motion.div
-            className="impound-image-container"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img src="/images/impounding.jpg" alt="Professional impounding service" className="impound-image" />
-            <div className="image-overlay">
-              <span className="overlay-text">Professional Impounding Services</span>
-            </div>
-          </motion.div>
-          <motion.div
-            className="impound-content"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="content-wrapper">
-              <h2>Private Property Impounding</h2>
-              <p className="impound-description">
-                Professional parking enforcement for property owners. We handle unauthorized vehicles quickly and legally.
+            <motion.div {...fadeUp}>
+              <p className="section-kicker">Property managers</p>
+              <h2 className="section-title">Illegal parking, handled legally.</h2>
+              <p className="section-lead">
+                We partner with apartments, HOAs, and commercial lots on private-property impounding —
+                documented, posted, and available after hours.
               </p>
-              
-              <div className="impound-list">
-                <div className="impound-feature">
-                  <span>✓</span>
-                  <span>24/7 Monitoring & Response</span>
-                </div>
-                <div className="impound-feature">
-                  <span>✓</span>
-                  <span>Legal Compliance & Signage</span>
-                </div>
-                <div className="impound-feature">
-                  <span>✓</span>
-                  <span>Professional Documentation</span>
-                </div>
-              </div>
-
-              <motion.button
-                className="schedule-inspection"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => window.location.href = 'tel:(615) 259-2727'}
-              >
-                Schedule Inspection
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="junk-cars">
-        <div className="junk-cars-container">
-          <motion.div
-            className="junk-cars-image"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <img src="/images/cash-for-junk.jpg" alt="Cash for junk cars" />
-          </motion.div>
-          <motion.div
-            className="junk-cars-content"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Cash for Junk Cars</h2>
-            <p>
-              Turn your unwanted vehicle into instant cash. We buy cars in any condition with free towing included.
-            </p>
-            <div className="junk-cars-benefits">
-              <div className="benefit-simple">
-                <span>💵</span>
-                <span>Instant Cash Payment</span>
-              </div>
-              <div className="benefit-simple">
-                <span>🚛</span>
-                <span>Free Towing Service</span>
-              </div>
-              <div className="benefit-simple">
-                <span>📝</span>
-                <span>We Handle Paperwork</span>
-              </div>
-            </div>
-            <motion.button
-              className="get-quote-button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = 'tel:(615) 259-2727'}
-            >
-              Get an Instant Quote
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Emergency Tips Section */}
-      <section className="emergency-tips">
-        <motion.div className="tips-timeline">
-          <h2 className="section-title-left">Emergency Response Guide</h2>
-          <div className="timeline-container">
-            {[
-              { step: 1, title: "Stay Calm & Safe", content: "Turn on hazard lights and move to a safe location" },
-              { step: 2, title: "Mark Your Location", content: "Use reflective triangles or flares if available" },
-              { step: 3, title: "Call Us", content: "We'll dispatch the nearest available tow truck" },
-            ].map((step, index) => (
-              <motion.div
-                key={index}
-                className="timeline-item"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.3 }}
-              >
-                <div className="timeline-step">{step.step}</div>
-                <div className="timeline-content">
-                  <h3>{step.title}</h3>
-                  <p>{step.content}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="faq">
-        <motion.h2 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="section-title-right"
-        >
-          Common Questions
-        </motion.h2>
-        <div className="faq-accordion">
-          {[
-            {
-              q: "How quickly can you arrive?",
-              a: "Our average response time is 30 minutes or less in most service areas. For emergencies, we prioritize quick dispatch to ensure you get help as soon as possible."
-            },
-            {
-              q: "Do you accept insurance?",
-              a: "Yes, we work with most major insurance providers and roadside assistance programs. We can help coordinate with your insurance company to handle the claim process smoothly."
-            },
-            {
-              q: "What forms of payment do you accept?",
-              a: "We accept all major credit cards, cash, and digital payments including Apple Pay and Google Pay. We can also work directly with insurance companies for covered services."
-            },
-            {
-              q: "What types of vehicles can you tow?",
-              a: "We can tow virtually any vehicle including cars, trucks, SUVs, motorcycles, and even heavy equipment. Our fleet includes flatbed trucks, wheel-lift trucks, and heavy-duty tow trucks to handle any situation."
-            },
-            {
-              q: "Do you provide long-distance towing?",
-              a: "Yes, we offer long-distance towing services across state lines. We ensure your vehicle is transported safely and securely to its destination, with regular updates throughout the journey."
-            },
-            {
-              q: "Are you available on holidays?",
-              a: "Yes, we operate 24/7, 365 days a year, including all holidays. We understand that emergencies don't take holidays, so neither do we."
-            },
-            {
-              q: "What areas do you service?",
-              a: "We primarily serve Franklin, Brentwood, Murfreesboro, Hendersonville, Lebanon, and Smyrna. However, we can accommodate requests outside these areas - just give us a call to discuss your needs."
-            },
-            {
-              q: "Do you offer roadside assistance without towing?",
-              a: "Yes, we provide various roadside assistance services including jump-starts, tire changes, fuel delivery, and lockout assistance, even when towing isn't needed."
-            }
-          ].slice(0, showAllFaqs ? undefined : 3).map((item, index) => (
-            <motion.div
-              key={index}
-              className="accordion-item"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.01 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <div 
-                className="accordion-header"
-                onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-              >
-                <h3>{item.q}</h3>
-                <span className="accordion-icon">
-                  {expandedFaq === index ? '−' : '+'}
-                </span>
-              </div>
-              <motion.div 
-                className="accordion-content"
-                initial={false}
-                animate={{
-                  height: expandedFaq === index ? 'auto' : 0,
-                  opacity: expandedFaq === index ? 1 : 0
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <p>{item.a}</p>
-              </motion.div>
+              <ul className="why-list">
+                <li>
+                  <IconBuilding className="icon" /> 24/7 monitoring and response
+                </li>
+                <li>
+                  <IconCheck className="icon" /> Signage and compliance support
+                </li>
+                <li>
+                  <IconCheck className="icon" /> Photo documentation on every tow
+                </li>
+              </ul>
+              <a className="btn btn-gold" href={SITE.phoneTel}>
+                Schedule a property walkthrough
+              </a>
             </motion.div>
-          ))}
-        </div>
-        <motion.button
-          className="show-more-button"
-          onClick={() => setShowAllFaqs(!showAllFaqs)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {showAllFaqs ? 'Show Less' : 'Show More Questions'}
-        </motion.button>
-      </section>
+          </div>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="contact-split">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="contact-container"
-        >
-          <div className="contact-content">
-            <h2>Ready to Get Help?</h2>
-            <p>24/7 Emergency Service Available</p>
-            <motion.a
-              href="tel:(615) 259-2727"
-              className="contact-phone-button"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              (615) 259-2727
-            </motion.a>
-            <motion.a
-              href="mailto:Expresswaytow1@gmail.com"
-              className="contact-email-button"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Expresswaytow1@gmail.com
-            </motion.a>
-            <div className="contact-features">
-              <div className="feature-item">
-                <p>Available 24/7</p>
-              </div>
-              <div className="feature-item">
-                <p>Fast Response Time</p>
-              </div>
+        <section id="junk" className="section split-light">
+          <div className="container split-grid reverse">
+            <motion.div {...fadeUp}>
+              <p className="section-kicker">Cash for cars</p>
+              <h2 className="section-title">We’ll buy the car that’s been sitting.</h2>
+              <p className="section-lead">
+                Running, wrecked, or rusted — we make a same-day cash offer, pick it up free, and take care of the title work.
+              </p>
+              <ul className="why-list">
+                <li>
+                  <IconCash className="icon" /> Instant cash offer
+                </li>
+                <li>
+                  <IconTruck className="icon" /> Free towing included
+                </li>
+                <li>
+                  <IconCheck className="icon" /> We handle the paperwork
+                </li>
+              </ul>
+              <a className="btn btn-dark" href={SITE.phoneTel}>
+                Get a junk-car quote
+              </a>
+            </motion.div>
+            <motion.div className="split-photo" {...fadeUp}>
+              <img src="/images/cash-for-junk.jpg" alt="Cash for junk cars pickup by Expressway Towing" />
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="section faq">
+          <div className="container faq-wrap">
+            <motion.div {...fadeUp} className="section-head">
+              <p className="section-kicker">FAQ</p>
+              <h2 className="section-title">Questions people ask from the shoulder.</h2>
+            </motion.div>
+            <div className="faq-list">
+              {faqs.map((item, index) => {
+                const open = openFaq === index
+                return (
+                  <div key={item.q} className={`faq-item ${open ? 'open' : ''}`}>
+                    <button
+                      type="button"
+                      className="faq-trigger"
+                      aria-expanded={open}
+                      onClick={() => setOpenFaq(open ? null : index)}
+                    >
+                      {item.q}
+                      <span aria-hidden="true">{open ? '–' : '+'}</span>
+                    </button>
+                    {open && (
+                      <div className="faq-panel">
+                        <p>{item.a}</p>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
-        </motion.div>
-      </section>
+        </section>
+
+        <section id="contact" className="final-cta">
+          <div className="container final-inner">
+            <p className="section-kicker">Still on the shoulder?</p>
+            <h2 className="section-title">Tap. We’ll come get you.</h2>
+            <p>A person answers. We dispatch on the call. Keep your hazards on until the truck is there.</p>
+            <div className="hero-actions">
+              <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
+                <IconPhone />
+                Get a truck now · {SITE.phoneDisplay}
+              </a>
+            </div>
+            <p className="cta-note">Not an emergency? Email {SITE.email}</p>
+          </div>
+        </section>
+      </main>
+
       <Footer />
+      <StickyCallBar />
     </div>
   )
 }
-
-export default Home
