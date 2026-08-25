@@ -25,11 +25,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://expressway-towing.com'),
   title: {
-    default: "Stuck? Don't Wait | 24/7 Towing Nashville ~30 Min",
+    default: "Stuck? Don't Wait | 24/7 Towing Nashville 15–25 Min",
     template: '%s | Expressway Towing',
   },
   description:
-    'Stuck in Nashville? Call (615) 259-2727. Live dispatch 24/7 — a person answers, we send the nearest truck. Typical arrival around 30 minutes. No waitlist. Flatbed, roadside, and accident recovery.',
+    'Stuck in Nashville? Call (615) 259-2727. Live dispatch 24/7 — a person answers, we send the nearest truck. Typical arrival 15–25 minutes. No waitlist. Flatbed, roadside, and accident recovery.',
   keywords: [
     'fast towing Nashville',
     'towing Nashville TN',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     'roadside assistance Nashville',
     'flatbed towing Nashville',
     'tow truck Nashville',
-    '30 minute towing Nashville',
+    '15-25 minute towing Nashville',
     'junk car removal Nashville',
     'cash for junk cars Nashville',
     'heavy duty towing Nashville',
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stuck in Nashville? Don't wait — get a truck rolling now",
     description:
-      'Live 24/7 dispatch. Typical arrival around 30 minutes. Call (615) 259-2727 — we send the nearest truck on the call.',
+      'Live 24/7 dispatch. Typical arrival 15–25 minutes. Call (615) 259-2727 — we send the nearest truck on the call.',
     url: 'https://expressway-towing.com/',
     siteName: 'Expressway Towing',
     images: [
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Don't wait for a tow in Nashville | Expressway Towing",
-    description: 'Live dispatch 24/7. Typical ~30 min arrival. Call (615) 259-2727.',
+    description: 'Live dispatch 24/7. Typical 15–25 min arrival. Call (615) 259-2727.',
     images: ['/images/hero-banner.jpg'],
     creator: '@expresswaytow',
   },
@@ -117,7 +117,7 @@ const localBusinessJsonLd = {
   ],
   logo: 'https://expressway-towing.com/images/logo-expressway.png',
   description:
-    '24/7 emergency towing in Nashville and Middle Tennessee. Live dispatch, typical arrival around 30 minutes, flatbed towing, roadside assistance, accident recovery, and cash for junk cars.',
+    '24/7 emergency towing in Nashville and Middle Tennessee. Live dispatch, typical arrival 15–25 minutes, flatbed towing, roadside assistance, accident recovery, and cash for junk cars.',
   '@id': 'https://expressway-towing.com/#business',
   url: 'https://expressway-towing.com/',
   telephone: '+16152592727',
@@ -199,7 +199,7 @@ const websiteJsonLd = {
   name: 'Expressway Towing',
   url: 'https://expressway-towing.com/',
   inLanguage: 'en-US',
-  description: "Stuck in Nashville? Don't wait. Live 24/7 dispatch with typical arrival around 30 minutes.",
+  description: "Stuck in Nashville? Don't wait. Live 24/7 dispatch with typical arrival 15–25 minutes.",
 }
 
 const faqJsonLd = {
@@ -211,7 +211,7 @@ const faqJsonLd = {
       name: 'How quickly can you arrive?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Typical arrival is around 30 minutes in most Nashville-area locations. We dispatch the nearest truck on the call — there is no waitlist and no appointment.',
+        text: 'Typical arrival is 15–25 minutes in most Nashville-area locations. We dispatch the nearest truck on the call — there is no waitlist and no appointment.',
       },
     },
     {

@@ -41,8 +41,8 @@ const Navbar = () => {
         <div className="promo-banner">
           <p>
             <span className="open-tag">Live now</span>
-            <span className="banner-full">Stuck? Dispatch answers. Typical arrival ~30 min.</span>
-            <span className="banner-short">~30 min arrival</span>
+            <span className="banner-full">Stuck? Dispatch answers. Typical arrival 15–25 min.</span>
+            <span className="banner-short">15–25 min arrival</span>
           </p>
           <a href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
             {SITE.phoneDisplay}

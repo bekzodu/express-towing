@@ -81,7 +81,7 @@ const steps = [
 const reasons = [
   'No waitlist — we dispatch the nearest truck on the call',
   'A person answers. 24/7. Including 2 a.m. and holidays.',
-  'Typical Nashville arrival around 30 minutes',
+  'Typical Nashville arrival 15–25 minutes',
   'Upfront quotes. No surprise fees after the hook.',
   'Flatbeds ready so you are not waiting on a second truck',
   'Local crews who know the interstates and the back roads',
@@ -108,7 +108,7 @@ const reviews = [
 const faqs = [
   {
     q: 'How quickly can you arrive?',
-    a: 'Typical arrival is around 30 minutes in most Nashville-area locations. We dispatch the nearest truck on the call — there is no waitlist and no appointment.',
+    a: 'Typical arrival is 15–25 minutes in most Nashville-area locations. We dispatch the nearest truck on the call — there is no waitlist and no appointment.',
   },
   {
     q: 'Do I have to wait on hold?',
@@ -156,7 +156,7 @@ export default function Home() {
               <p className="hero-kicker">Live dispatch · A person answers</p>
               <h1>Stuck? Don’t wait. Get a truck rolling now.</h1>
               <p className="hero-lead">
-                One call. We send the closest truck. Most Nashville pickups land around 30 minutes —
+                One call. We send the closest truck. Most Nashville pickups land in 15–25 minutes —
                 not later today, not after lunch.
               </p>
               <div className="hero-actions">
@@ -168,7 +168,7 @@ export default function Home() {
               <p className="cta-note">Takes about 20 seconds. No hold music. No waitlist.</p>
               <ul className="hero-trust">
                 <li>
-                  <IconClock className="icon" /> Typical arrival ~30 min
+                  <IconClock className="icon" /> Typical arrival 15–25 min
                 </li>
                 <li>
                   <IconShield className="icon" /> Licensed & insured
@@ -191,7 +191,7 @@ export default function Home() {
               <span>A person answers 24/7</span>
             </div>
             <div>
-              <strong>~30 min</strong>
+              <strong>15–25 min</strong>
               <span>Typical Nashville arrival</span>
             </div>
             <div>

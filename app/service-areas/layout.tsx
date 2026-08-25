@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Towing Near You · Nashville, Franklin, Brentwood',
   description:
-    'Local trucks mean shorter waits. Expressway Towing covers Nashville, Franklin, Brentwood, Murfreesboro, Hendersonville, Lebanon, and Smyrna. Typical arrival 20–40 min. Call (615) 259-2727.',
+    'Local trucks mean shorter waits. Expressway Towing covers Nashville, Franklin, Brentwood, Murfreesboro, Hendersonville, Lebanon, and Smyrna. Typical arrival 15–25 min. Call (615) 259-2727.',
   keywords: [
     'towing near me Nashville',
     'towing Franklin TN',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://expressway-towing.com/service-areas/' },
   openGraph: {
     title: 'Faster tows because the trucks are already local',
-    description: 'Nashville and surrounding cities. Typical arrival 20–40 minutes. Call (615) 259-2727.',
+    description: 'Nashville and surrounding cities. Typical arrival 15–25 minutes. Call (615) 259-2727.',
     url: 'https://expressway-towing.com/service-areas/',
     type: 'website',
     images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 675, alt: 'Expressway Towing service area coverage' }],

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://expressway-towing.com/accident-recovery/' },
   openGraph: {
     title: 'Accident Recovery Nashville — off the shoulder, fast',
-    description: 'Scene-safe recovery 24/7. Call (615) 259-2727. Typical arrival around 30 minutes.',
+    description: 'Scene-safe recovery 24/7. Call (615) 259-2727. Typical arrival 15–25 minutes.',
     url: 'https://expressway-towing.com/accident-recovery/',
     type: 'website',
     images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 675, alt: 'Expressway Towing accident recovery' }],

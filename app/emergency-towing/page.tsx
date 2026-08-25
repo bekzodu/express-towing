@@ -17,7 +17,7 @@ export default function EmergencyTowing() {
           <div className="container">
             <p className="eyebrow">Don’t sit on the shoulder</p>
             <h1>Need a tow right now? We’ll dispatch on this call.</h1>
-            <p>A person answers. Typical arrival around 30 minutes across Nashville. No waitlist. No “we’ll try to fit you in.”</p>
+            <p>A person answers. Typical arrival 15–25 minutes across Nashville. No waitlist. No “we’ll try to fit you in.”</p>
             <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
               Get a truck now · {SITE.phoneDisplay}
             </a>
@@ -29,13 +29,13 @@ export default function EmergencyTowing() {
           <div className="content-wrap">
             <h2>When you need help fast, a truck starts moving</h2>
             <p className="lead">
-              Breakdowns do not wait for business hours. You call, a person answers, and we send the nearest licensed truck — highway, parking garage, or neighborhood street. Typical Nashville arrival is around 30 minutes, not later today.
+              Breakdowns do not wait for business hours. You call, a person answers, and we send the nearest licensed truck — highway, parking garage, or neighborhood street. Typical Nashville arrival is 15–25 minutes, not later today.
             </p>
 
             <div className="feature-grid">
               <article className="feature-card">
-                <div className="feature-icon">30</div>
-                <h3>~30 min arrival</h3>
+                <div className="feature-icon">15</div>
+                <h3>15–25 min arrival</h3>
                 <p>Typical response across the Nashville metro.</p>
               </article>
               <article className="feature-card">
@@ -77,7 +77,7 @@ export default function EmergencyTowing() {
 
             <div className="cta-box">
               <h3>Need a truck now?</h3>
-              <p>A person answers. We dispatch on this call. Typical arrival around 30 minutes.</p>
+              <p>A person answers. We dispatch on this call. Typical arrival 15–25 minutes.</p>
               <div className="cta-row">
                 <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
                   Get a truck now · {SITE.phoneDisplay}

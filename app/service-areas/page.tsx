@@ -11,43 +11,43 @@ import '../../styles/SitelinkPages.css'
 const areas = [
   {
     name: 'Nashville',
-    time: '20–30 min',
+    time: '15–25 min',
     copy: 'Full coverage across Metro Nashville — downtown through the neighborhoods.',
     places: ['Downtown', 'East Nashville', 'West Nashville', 'Germantown', 'The Gulch', 'Music Row'],
   },
   {
     name: 'Franklin',
-    time: '25–35 min',
+    time: '15–25 min',
     copy: 'Fast response through Franklin and Williamson County.',
     places: ['Historic Downtown', 'Cool Springs', 'Westhaven', 'Fieldstone Farms'],
   },
   {
     name: 'Brentwood',
-    time: '25–35 min',
+    time: '15–25 min',
     copy: 'Residential and commercial towing throughout Brentwood.',
     places: ['Brentwood Estates', 'Governors Club', 'Brentwood Hills'],
   },
   {
     name: 'Murfreesboro',
-    time: '30–40 min',
+    time: '15–25 min',
     copy: 'Reliable towing for Murfreesboro and Rutherford County.',
     places: ['Downtown', 'Medical District', 'MTSU area', 'Gateway'],
   },
   {
     name: 'Hendersonville',
-    time: '25–35 min',
+    time: '15–25 min',
     copy: 'Quick dispatch across Hendersonville and Sumner County.',
     places: ['Lakeside', 'Indian Lake', 'Walton Ferry'],
   },
   {
     name: 'Lebanon',
-    time: '30–40 min',
+    time: '15–25 min',
     copy: 'Professional recovery throughout Lebanon and Wilson County.',
     places: ['Downtown Lebanon', 'Cedar Grove', 'Tuckers Crossroads'],
   },
   {
     name: 'Smyrna',
-    time: '30–40 min',
+    time: '15–25 min',
     copy: 'Coverage along the Smyrna corridors and nearby industrial parks.',
     places: ['Sam Ridley Pkwy', 'Lee Victory area'],
   },
@@ -62,7 +62,7 @@ export default function ServiceAreas() {
           <div className="container">
             <p className="eyebrow">Closer trucks. Shorter wait.</p>
             <h1>Towing near you — because the truck is already local.</h1>
-            <p>Nashville, Franklin, Brentwood, Murfreesboro, and nearby. Typical arrival 20–40 minutes. Call and we’ll give you an honest ETA in seconds.</p>
+            <p>Nashville, Franklin, Brentwood, Murfreesboro, and nearby. Typical arrival 15–25 minutes. Call and we’ll give you an honest ETA in seconds.</p>
             <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
               Get a truck now · {SITE.phoneDisplay}
             </a>
@@ -89,9 +89,9 @@ export default function ServiceAreas() {
                 <p>I-40, I-24, I-65, I-440, and Briley.</p>
               </article>
               <article className="feature-card">
-                <div className="feature-icon">30</div>
+                <div className="feature-icon">15</div>
                 <h3>Local ETAs</h3>
-                <p>Typical arrival in about half an hour.</p>
+                <p>Typical arrival in 15–25 minutes.</p>
               </article>
               <article className="feature-card">
                 <div className="feature-icon">+</div>
@@ -120,11 +120,11 @@ export default function ServiceAreas() {
             <div className="info-card">
               <h3>Typical response times</h3>
               <ul>
-                <li><strong>Nashville:</strong> 20–30 minutes</li>
-                <li><strong>Franklin & Brentwood:</strong> 25–35 minutes</li>
-                <li><strong>Murfreesboro:</strong> 30–40 minutes</li>
-                <li><strong>Hendersonville:</strong> 25–35 minutes</li>
-                <li><strong>Lebanon & Smyrna:</strong> 30–40 minutes</li>
+                <li><strong>Nashville:</strong> 15–25 minutes</li>
+                <li><strong>Franklin & Brentwood:</strong> 15–25 minutes</li>
+                <li><strong>Murfreesboro:</strong> 15–25 minutes</li>
+                <li><strong>Hendersonville:</strong> 15–25 minutes</li>
+                <li><strong>Lebanon & Smyrna:</strong> 15–25 minutes</li>
               </ul>
               <p>Traffic, weather, and time of day can change arrival windows. Emergencies go first.</p>
             </div>

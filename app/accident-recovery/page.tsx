@@ -21,7 +21,7 @@ export default function AccidentRecovery() {
             <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>
               Get a truck now · {SITE.phoneDisplay}
             </a>
-            <p className="hero-cta-note">Live dispatch. Typical arrival around 30 minutes.</p>
+            <p className="hero-cta-note">Live dispatch. Typical arrival 15–25 minutes.</p>
           </div>
         </section>
 

@@ -7,17 +7,17 @@ export const SITE = {
   city: 'Nashville',
   region: 'TN',
   hours: 'Open 24/7, 365 days a year',
-  response: 'Typical arrival around 30 minutes',
+  response: 'Typical arrival 15–25 minutes',
   slogan: "Stuck? Don't wait. Get a truck rolling now.",
   address: 'Nashville, TN 37203',
 } as const
 
 export const SERVICE_AREAS = [
-  { name: 'Nashville', time: '20–30 min' },
-  { name: 'Franklin', time: '25–35 min' },
-  { name: 'Brentwood', time: '25–35 min' },
-  { name: 'Murfreesboro', time: '30–40 min' },
-  { name: 'Hendersonville', time: '25–35 min' },
-  { name: 'Lebanon', time: '30–40 min' },
-  { name: 'Smyrna', time: '30–40 min' },
+  { name: 'Nashville', time: '15–25 min' },
+  { name: 'Franklin', time: '15–25 min' },
+  { name: 'Brentwood', time: '15–25 min' },
+  { name: 'Murfreesboro', time: '15–25 min' },
+  { name: 'Hendersonville', time: '15–25 min' },
+  { name: 'Lebanon', time: '15–25 min' },
+  { name: 'Smyrna', time: '15–25 min' },
 ] as const

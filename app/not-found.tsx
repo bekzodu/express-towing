@@ -14,7 +14,7 @@ export default function NotFound() {
         <p className="section-kicker">404</p>
         <h1 className="section-title">That page is not on this route.</h1>
         <p className="section-lead" style={{ margin: '0 auto 1.5rem' }}>
-          Need a tow anyway? Dispatch is live. Typical arrival around 30 minutes.
+          Need a tow anyway? Dispatch is live. Typical arrival 15–25 minutes.
         </p>
         <div className="hero-actions" style={{ justifyContent: 'center' }}>
           <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>

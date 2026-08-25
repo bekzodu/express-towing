@@ -15,7 +15,7 @@ const Footer = () => {
             <img src="/images/logo-expressway.png" alt="Expressway Towing" className="nav-logo-img" />
           </Link>
           <p>
-            Licensed, insured towing across Nashville. Live dispatch. Typical arrival around 30 minutes.
+            Licensed, insured towing across Nashville. Live dispatch. Typical arrival 15–25 minutes.
             You call. A truck starts moving.
           </p>
           <a className="btn btn-gold" href={SITE.phoneTel} aria-label={`Get a truck now. Call ${SITE.phoneDisplay}`}>

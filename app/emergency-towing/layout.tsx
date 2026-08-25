@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Emergency Towing Nashville · ~30 Min',
+  title: 'Emergency Towing Nashville · 15–25 Min',
   description:
-    'Need a tow right now? Call (615) 259-2727. Live dispatch answers. Typical 30-minute arrival across Nashville. No waitlist, no hold music. We send the nearest truck on the call.',
+    'Need a tow right now? Call (615) 259-2727. Live dispatch answers. Typical 15–25 minute arrival across Nashville. No waitlist, no hold music. We send the nearest truck on the call.',
   keywords: [
     'emergency towing Nashville',
     'fast towing Nashville',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://expressway-towing.com/emergency-towing/' },
   openGraph: {
     title: 'Emergency Towing Nashville — Don’t wait for a truck',
-    description: 'Live 24/7 dispatch. Typical ~30 min arrival. Call (615) 259-2727.',
+    description: 'Live 24/7 dispatch. Typical 15–25 min arrival. Call (615) 259-2727.',
     url: 'https://expressway-towing.com/emergency-towing/',
     type: 'website',
     images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 675, alt: 'Expressway Towing emergency dispatch' }],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Emergency Towing Nashville | Don’t wait',
-    description: 'Live dispatch. Typical 30-minute arrival. Call (615) 259-2727.',
+    description: 'Live dispatch. Typical 15–25 minute arrival. Call (615) 259-2727.',
     images: ['/images/hero-banner.jpg'],
   },
 }
